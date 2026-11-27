@@ -1,11 +1,11 @@
-# Debugging a Team — Speaker Notes (9-Slide Edition)
+# Debugging a Team — Speaker Notes (10-Slide Edition)
 
 These notes are for the presenter only and do not appear on the slides.
 
-The five dysfunctions, their order, DecisionTech's story, and the cohesive team behaviors come from Patrick Lencioni's *The Five Dysfunctions of a Team*. The engineering framing and the AI scenario are our presentation metaphor, not claims made by the author.
+The five dysfunctions, their order, DecisionTech's story, and the cohesive team behaviors come from Patrick Lencioni's *The Five Dysfunctions of a Team*. The engineering framing, the AI scenario, and the mapping to SJ Innovation's cultural values are our presentation application, not claims made by the author.
 
 Presenter: Shahriar Rashid, AI Engineer Intern, SJ Innovation
-Runtime: ~8–9 minutes · 9 slides · 16:9
+Runtime: ~9–10 minutes · 10 slides · 16:9
 
 ---
 
@@ -115,11 +115,27 @@ Imagine a modern engineering team using AI coding assistants across code generat
 
 AI clearly speeds up execution. But without trust, honest debate, commitment, and accountability, AI can also help a dysfunctional team fail faster."
 
+Transition: "And here is the part that hits closest to home—for us at SJ Innovation."
+
+---
+
+## Slide 8 — System Alignment: SJ Innovation Culture (1 minute)
+
+"What surprised me while preparing this talk is that Lencioni's patches aren't some outside theory we need to invent from scratch. Look at SJ Innovation's six cultural values—every single one maps directly onto a layer of this pyramid:
+
+1. **Trust** maps to **Continuous Self-Improvement**—you can't learn every day if you're hiding mistakes or afraid to say 'I don't know yet.'
+2. **Productive Conflict** maps to **Solution Oriented**—focusing on solving the real problem instead of dwelling on issues or staying politely silent to protect egos.
+3. **Commitment** maps to **Team Commitment** and **On-Time Delivery**—backing clear decisions, uplifting teammates, and committing to schedules without silent doubts.
+4. **Accountability** maps to **Personal Accountability**—owning our actions and project outcomes instead of waiting for someone else to chase us.
+5. **Shared Results** maps to **Client-First Mindset**—measuring success by real client impact, not personal scorecards or department turf.
+
+Values written on a website don't fix a team. Values practiced under deadline pressure do."
+
 Transition: "That brings us back to where we started."
 
 ---
 
-## Slide 8 — Final Diagnostic: Closing the Loop (45 seconds)
+## Slide 9 — Final Diagnostic: Closing the Loop (45 seconds)
 
 "We started with DecisionTech: brilliant people, strong tech, failing company. The fix wasn't hiring smarter people or buying faster tools. It was fixing how the team worked together.
 
@@ -134,6 +150,6 @@ Pause after the final sentence.
 
 ---
 
-## Slide 9 — Thank You (15 seconds)
+## Slide 10 — Thank You (15 seconds)
 
 "Thank you for listening. Questions are welcome—fear of conflict is temporarily disabled."

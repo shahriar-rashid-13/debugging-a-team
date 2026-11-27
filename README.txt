@@ -12,7 +12,7 @@ Target folder:
        cd $env:USERPROFILE\Documents\debugging-a-team
        start index.html
 
-3. Present: Right arrow or Space · Left arrow · Home / End · keys 1-9 · fullscreen button · Escape exits fullscreen
+3. Present: Right arrow or Space · Left arrow · Home / End · keys 1-9, 0 · fullscreen button · Escape exits fullscreen
 
 Speaker script (not shown on the slides): speaker-notes.md
 
