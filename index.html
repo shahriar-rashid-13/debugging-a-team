@@ -6,11 +6,12 @@
   <title>Debugging a Team — Why talented individuals don't always build successful teams</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #101936;
       --bg-2: #17254B;
+      --space: #040712;
       --text: #F3F5FF;
       --muted: #A9B7D8;
       --orange: #FF995C;
@@ -26,7 +27,7 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background: var(--bg);
+      background: var(--space);
       color: var(--text);
       font-family: Inter, "Segoe UI", sans-serif;
       -webkit-font-smoothing: antialiased;
@@ -40,7 +41,7 @@
       height: 100vh;
       overflow: hidden;
       position: relative;
-      background: var(--bg);
+      background: var(--space);
     }
 
     .presentation-viewport {
@@ -79,49 +80,56 @@
       pointer-events: none;
     }
 
+    /* Cinematic slides: navy on left transitioning into deep space on right */
     .slide.cinematic .slide-background {
       background:
-        radial-gradient(ellipse 46% 40% at 80% 30%, rgba(255, 153, 92, 0.2), transparent 62%),
-        radial-gradient(ellipse 34% 32% at 90% 76%, rgba(100, 142, 255, 0.22), transparent 64%),
-        radial-gradient(ellipse 42% 32% at 10% 90%, rgba(100, 142, 255, 0.1), transparent 62%),
-        linear-gradient(168deg, #141c3c 0%, #101936 48%, #17254B 100%);
+        radial-gradient(ellipse 36% 34% at 84% 24%, rgba(255, 153, 92, 0.14), transparent 62%),
+        radial-gradient(ellipse 30% 30% at 78% 78%, rgba(100, 142, 255, 0.16), transparent 62%),
+        radial-gradient(ellipse 46% 52% at 14% 24%, rgba(26, 42, 86, 0.55), transparent 70%),
+        linear-gradient(96deg, #16234a 0%, #101936 38%, #070b1a 68%, #03050d 100%);
     }
 
+    /* Technical slides: structured navy with subtle darker space edge on right */
     .slide.technical .slide-background {
       background:
-        radial-gradient(ellipse 42% 34% at 100% 0%, rgba(100, 142, 255, 0.12), transparent 58%),
-        radial-gradient(ellipse 32% 28% at 0% 100%, rgba(255, 153, 92, 0.08), transparent 58%),
-        linear-gradient(180deg, #1b2d58 0%, #142246 34%, #101936 100%);
+        radial-gradient(ellipse 38% 36% at 96% 8%, rgba(100, 142, 255, 0.10), transparent 56%),
+        radial-gradient(ellipse 34% 30% at 4% 96%, rgba(255, 153, 92, 0.08), transparent 58%),
+        linear-gradient(108deg, #1a2b55 0%, #132042 46%, #0c142c 78%, #070c1c 100%);
     }
 
     .tech-texture {
-      background-image: radial-gradient(rgba(169, 183, 216, 0.45) 1px, transparent 1.4px);
+      background-image: radial-gradient(rgba(169, 183, 216, 0.42) 1px, transparent 1.4px);
       background-size: 34px 34px;
-      opacity: 0.16;
-      mask-image: radial-gradient(ellipse 78% 68% at 50% 42%, #000 25%, transparent 80%);
+      opacity: 0.14;
+      mask-image: radial-gradient(ellipse 78% 68% at 48% 44%, #000 24%, transparent 80%);
     }
 
+    /* Starfield denser on the right deep-space side */
     .ambient-particles {
-      opacity: 0.55;
+      opacity: 0.85;
       background-image:
-        radial-gradient(1.4px 1.4px at 8% 18%, rgba(243, 245, 255, 0.7), transparent),
-        radial-gradient(1px 1px at 16% 42%, rgba(100, 142, 255, 0.7), transparent),
-        radial-gradient(1.2px 1.2px at 22% 72%, rgba(243, 245, 255, 0.45), transparent),
-        radial-gradient(1px 1px at 28% 28%, rgba(255, 153, 92, 0.45), transparent),
-        radial-gradient(1.3px 1.3px at 36% 14%, rgba(243, 245, 255, 0.55), transparent),
-        radial-gradient(1px 1px at 41% 58%, rgba(243, 245, 255, 0.35), transparent),
-        radial-gradient(1.2px 1.2px at 48% 36%, rgba(100, 142, 255, 0.5), transparent),
-        radial-gradient(1px 1px at 54% 78%, rgba(243, 245, 255, 0.4), transparent),
-        radial-gradient(1.4px 1.4px at 63% 16%, rgba(243, 245, 255, 0.5), transparent),
-        radial-gradient(1px 1px at 70% 48%, rgba(255, 153, 92, 0.4), transparent),
-        radial-gradient(1px 1px at 76% 84%, rgba(243, 245, 255, 0.35), transparent),
-        radial-gradient(1.2px 1.2px at 84% 24%, rgba(100, 142, 255, 0.45), transparent),
-        radial-gradient(1px 1px at 91% 62%, rgba(243, 245, 255, 0.4), transparent),
-        radial-gradient(1.3px 1.3px at 12% 88%, rgba(100, 142, 255, 0.4), transparent),
-        radial-gradient(1px 1px at 33% 92%, rgba(243, 245, 255, 0.3), transparent),
-        radial-gradient(1px 1px at 58% 8%, rgba(255, 153, 92, 0.35), transparent),
-        radial-gradient(1.2px 1.2px at 95% 12%, rgba(243, 245, 255, 0.45), transparent),
-        radial-gradient(1px 1px at 4% 56%, rgba(243, 245, 255, 0.35), transparent);
+        radial-gradient(1.2px 1.2px at 10% 18%, rgba(243, 245, 255, 0.45), transparent),
+        radial-gradient(1px 1px at 19% 68%, rgba(100, 142, 255, 0.45), transparent),
+        radial-gradient(1.1px 1.1px at 34% 14%, rgba(243, 245, 255, 0.4), transparent),
+        radial-gradient(1px 1px at 46% 82%, rgba(243, 245, 255, 0.35), transparent),
+        radial-gradient(1.5px 1.5px at 56% 16%, rgba(243, 245, 255, 0.78), transparent),
+        radial-gradient(1.2px 1.2px at 60% 42%, rgba(169, 183, 216, 0.65), transparent),
+        radial-gradient(1.6px 1.6px at 64% 72%, rgba(243, 245, 255, 0.8), transparent),
+        radial-gradient(1px 1px at 67% 28%, rgba(255, 153, 92, 0.65), transparent),
+        radial-gradient(1.8px 1.8px at 72% 10%, rgba(243, 245, 255, 0.9), transparent),
+        radial-gradient(1.2px 1.2px at 74% 52%, rgba(100, 142, 255, 0.75), transparent),
+        radial-gradient(1.4px 1.4px at 79% 90%, rgba(243, 245, 255, 0.7), transparent),
+        radial-gradient(1.1px 1.1px at 83% 44%, rgba(243, 245, 255, 0.65), transparent),
+        radial-gradient(1.7px 1.7px at 88% 12%, rgba(243, 245, 255, 0.85), transparent),
+        radial-gradient(1.2px 1.2px at 91% 60%, rgba(255, 200, 160, 0.7), transparent),
+        radial-gradient(1.5px 1.5px at 95% 32%, rgba(243, 245, 255, 0.8), transparent),
+        radial-gradient(1.3px 1.3px at 96% 84%, rgba(140, 175, 255, 0.8), transparent),
+        radial-gradient(1px 1px at 62% 88%, rgba(243, 245, 255, 0.55), transparent),
+        radial-gradient(1px 1px at 53% 56%, rgba(243, 245, 255, 0.5), transparent),
+        radial-gradient(1.2px 1.2px at 69% 40%, rgba(243, 245, 255, 0.6), transparent),
+        radial-gradient(1px 1px at 86% 68%, rgba(243, 245, 255, 0.55), transparent),
+        radial-gradient(1.3px 1.3px at 93% 48%, rgba(243, 245, 255, 0.7), transparent),
+        radial-gradient(1.1px 1.1px at 58% 26%, rgba(100, 142, 255, 0.6), transparent);
     }
 
     .slide-content {
@@ -139,7 +147,8 @@
     .hero-tags span,
     .comparison-heading,
     .diagnostic-id,
-    .diagnostic-status {
+    .diagnostic-status,
+    .mono {
       font-family: "JetBrains Mono", Consolas, monospace;
     }
 
@@ -151,12 +160,14 @@
       color: var(--orange);
     }
 
+    .eyebrow.is-blue { color: var(--blue); }
+    .eyebrow.is-green { color: var(--green); }
     .eyebrow span { color: rgba(169, 183, 216, 0.55); margin: 0 8px; }
 
     .slide.technical .slide-content {
       display: flex;
       flex-direction: column;
-      padding: 52px 92px 40px;
+      padding: 50px 92px 40px;
     }
 
     .slide-header {
@@ -178,13 +189,21 @@
       background: linear-gradient(90deg, var(--orange), var(--blue));
     }
 
+    .slide-header.accent-green::after {
+      background: linear-gradient(90deg, var(--orange), var(--green));
+    }
+
+    .slide-header.accent-blue::after {
+      background: linear-gradient(90deg, var(--blue), #9eb6ff);
+    }
+
     .slide-number {
       font-size: 15px;
       letter-spacing: 0.16em;
       color: var(--muted);
     }
 
-    .section-heading { margin-top: 34px; }
+    .section-heading { margin-top: 30px; }
 
     .section-heading h2,
     .text-column h2,
@@ -197,14 +216,14 @@
     }
 
     .section-heading h2 {
-      font-size: 48px;
+      font-size: 46px;
       line-height: 1.12;
       font-weight: 700;
     }
 
     .section-heading p {
-      margin-top: 12px;
-      font-size: 25px;
+      margin-top: 10px;
+      font-size: 24px;
       line-height: 1.4;
       color: var(--muted);
       font-weight: 400;
@@ -225,44 +244,86 @@
       margin-top: 22px;
     }
 
-    /* Slide 1 */
+    /* ================= SLIDE 1 — CINEMATIC OPENING ================= */
     .slide-01 .slide-content {
-      width: 58%;
+      width: 56%;
       height: 100%;
       display: flex;
       flex-direction: column;
-      padding: 72px 64px 52px 108px;
+      padding: 68px 40px 48px 104px;
     }
 
+    .slide-01 .hero-copy { margin-top: 42px; }
+
     .slide-01 h1 {
-      margin-top: 0;
-      font-size: 100px;
+      font-size: 98px;
       line-height: 0.9;
       font-weight: 800;
       letter-spacing: -0.045em;
     }
 
-    .slide-01 .hero-copy { margin-top: 48px; }
+    .title-main { color: var(--text); display: inline-block; }
 
-    .slide-01 .hero-tags { margin-top: 28px; }
+    .title-accent,
+    .closing-statement h2 {
+      display: inline-block;
+      color: var(--orange);
+      background-image: linear-gradient(100deg, #FF995C 0%, #e7c4b4 42%, #9eb0ff 72%, #648EFF 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-    .slide-01 .slide-footer { margin-top: auto; }
+    .slide-01 h2 {
+      margin-top: 32px;
+      max-width: 680px;
+      font-family: Manrope, Inter, sans-serif;
+      font-size: 38px;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+      color: var(--text);
+    }
+
+    .slide-01 .hero-copy p {
+      margin-top: 22px;
+      max-width: 560px;
+      font-size: 25px;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .hero-tags span {
+      font-size: 13px;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      border: 1px solid rgba(169, 183, 216, 0.36);
+      padding: 10px 14px;
+    }
 
     .presenter-card {
       display: flex;
       align-items: center;
-      gap: 18px;
-      margin-top: 28px;
+      gap: 20px;
+      margin-top: 30px;
       padding-top: 22px;
       border-top: 1px solid rgba(169, 183, 216, 0.22);
       max-width: 640px;
     }
 
     .presenter-card img {
-      width: 210px;
+      width: 204px;
       height: auto;
       display: block;
       flex-shrink: 0;
+      border-radius: 4px;
     }
 
     .presenter-meta {
@@ -294,124 +355,171 @@
       margin-top: 4px;
     }
 
-    .title-main { color: var(--text); display: inline-block; }
+    .slide-01 .slide-footer { margin-top: auto; }
 
-    .title-accent,
-    .closing-statement h2 {
-      display: inline-block;
-      color: var(--orange);
-      background-image: linear-gradient(100deg, #FF995C 0%, #e7c4b4 42%, #9eb0ff 72%, #648EFF 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .slide-01 h2 {
-      margin-top: 36px;
-      max-width: 680px;
-      font-family: Manrope, Inter, sans-serif;
-      font-size: 40px;
-      font-weight: 600;
-      line-height: 1.2;
-      letter-spacing: -0.025em;
-      color: var(--text);
-    }
-
-    .slide-01 .hero-copy p {
-      margin-top: 26px;
-      max-width: 560px;
-      font-size: 26px;
-      line-height: 1.45;
-      color: var(--muted);
-    }
-
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 42px;
-    }
-
-    .hero-tags span {
-      font-size: 13px;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-      border: 1px solid rgba(169, 183, 216, 0.38);
-      padding: 11px 14px;
-    }
-
-    .orbital-visual {
+    .space-scene {
       position: absolute;
-      inset: 0 0 0 48%;
+      inset: 0 0 0 46%;
       z-index: 1;
       pointer-events: none;
     }
 
-    .orbital-visual::before {
+    .space-scene svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      overflow: visible;
+    }
+
+    /* ================= SLIDE 2 — THE INCIDENT ================= */
+    .incident-grid {
+      flex: 1;
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 44px;
+      align-items: center;
+      min-height: 0;
+    }
+
+    .incident-brief {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .incident-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      align-self: flex-start;
+      padding: 10px 16px;
+      border: 1px solid rgba(255, 153, 92, 0.45);
+      background: rgba(255, 153, 92, 0.08);
+      font-family: "JetBrains Mono", Consolas, monospace;
+      font-size: 14px;
+      letter-spacing: 0.15em;
+      color: var(--orange);
+    }
+
+    .incident-tag::before {
       content: "";
-      position: absolute;
-      width: 720px;
-      height: 720px;
-      top: -160px;
-      right: -160px;
-      background: radial-gradient(circle, rgba(255, 153, 92, 0.28), transparent 68%);
-      filter: blur(8px);
-    }
-
-    .orange-orb,
-    .blue-orb {
-      position: absolute;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
+      background: var(--orange);
+      box-shadow: 0 0 10px rgba(255, 153, 92, 0.9);
     }
 
-    .orange-orb {
-      width: 560px;
-      height: 560px;
-      top: -130px;
-      right: -150px;
-      background:
-        radial-gradient(circle at 36% 34%, rgba(255, 244, 232, 0.95) 0%, #ffc7a2 14%, #ff995c 30%, #e56a2c 54%, rgba(255, 153, 92, 0.18) 70%, transparent 76%);
-      box-shadow:
-        0 0 80px 24px rgba(255, 153, 92, 0.28),
-        0 0 180px 60px rgba(255, 153, 92, 0.12);
+    .incident-brief h3 {
+      font-family: Manrope, Inter, sans-serif;
+      font-size: 46px;
+      line-height: 1.12;
+      font-weight: 700;
+      letter-spacing: -0.03em;
     }
 
-    .blue-orb {
-      width: 280px;
-      height: 280px;
-      right: 86px;
-      bottom: 128px;
-      background:
-        radial-gradient(circle at 38% 36%, #f4f7ff 0%, #b7c7ff 16%, #648EFF 38%, #3558c9 62%, rgba(100, 142, 255, 0.12) 74%, transparent 78%);
-      box-shadow:
-        0 0 60px 16px rgba(100, 142, 255, 0.3),
-        0 0 130px 36px rgba(100, 142, 255, 0.12);
+    .incident-brief h3 span { color: var(--orange); }
+
+    .incident-brief p {
+      font-size: 24px;
+      line-height: 1.48;
+      color: var(--muted);
+      max-width: 660px;
     }
 
-    .orbit {
-      position: absolute;
-      border-radius: 50%;
-      border: 1.5px solid rgba(255, 153, 92, 0.38);
+    .incident-quote {
+      margin-top: 8px;
+      padding: 18px 22px;
+      border-left: 3px solid var(--blue);
+      background: rgba(100, 142, 255, 0.07);
+      font-size: 21px;
+      line-height: 1.45;
+      color: var(--text);
+      max-width: 680px;
     }
 
-    .orbit-one {
-      width: 780px;
-      height: 780px;
-      top: -210px;
-      right: -230px;
-      transform: rotate(-18deg) scaleY(0.9);
+    .incident-quote span {
+      display: block;
+      margin-top: 8px;
+      font-family: "JetBrains Mono", Consolas, monospace;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      color: var(--blue);
     }
 
-    .orbit-two {
-      width: 540px;
-      height: 540px;
-      top: -90px;
-      right: -100px;
-      border-color: rgba(100, 142, 255, 0.4);
-      transform: rotate(14deg) scaleY(0.92);
+    .telemetry-panel {
+      background: rgba(12, 20, 44, 0.78);
+      border: 1px solid rgba(169, 183, 216, 0.18);
+      padding: 28px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
     }
 
-    /* Slide 2 */
+    .telemetry-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(169, 183, 216, 0.16);
+      font-family: "JetBrains Mono", Consolas, monospace;
+      font-size: 14px;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+    }
+
+    .telemetry-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 18px;
+      background: rgba(23, 37, 75, 0.55);
+      border: 1px solid rgba(169, 183, 216, 0.12);
+    }
+
+    .telemetry-label {
+      font-family: Manrope, Inter, sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .telemetry-sub {
+      font-size: 16px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .status-pill {
+      font-family: "JetBrains Mono", Consolas, monospace;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      padding: 7px 12px;
+      border: 1px solid rgba(112, 214, 160, 0.45);
+      color: var(--green);
+      background: rgba(112, 214, 160, 0.08);
+      white-space: nowrap;
+    }
+
+    .telemetry-alert {
+      margin-top: 6px;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(240, 120, 120, 0.12);
+      border: 1px solid rgba(240, 120, 120, 0.52);
+    }
+
+    .telemetry-alert .telemetry-label { color: #ffd4d4; }
+    .telemetry-alert .status-pill {
+      border-color: rgba(240, 120, 120, 0.65);
+      color: var(--error);
+      background: rgba(240, 120, 120, 0.14);
+    }
+
+    /* ================= SLIDE 3 — ROOT CAUSE PYRAMID (KEPT EXACT) ================= */
     .two-column-layout {
       flex: 1;
       display: grid;
@@ -431,7 +539,7 @@
 
     .text-column .lead {
       margin-top: 28px;
-      max-width: 460px;
+      max-width: 470px;
       font-size: 28px;
       line-height: 1.35;
       color: var(--text);
@@ -439,7 +547,7 @@
 
     .text-column .supporting-text {
       margin-top: 16px;
-      max-width: 420px;
+      max-width: 440px;
       font-size: 24px;
       line-height: 1.4;
       color: var(--muted);
@@ -490,10 +598,102 @@
     .level-2 { top: 342px; }
     .level-1 { top: 456px; }
 
-    /* Slide 3 */
+    /* ================= SLIDE 4 — FAILURE CASCADE ================= */
+    .cascade-track {
+      flex: 1;
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+      align-items: stretch;
+      min-height: 0;
+      position: relative;
+    }
+
+    .cascade-step {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 26px 24px 24px;
+      background: rgba(18, 30, 62, 0.72);
+      border: 1px solid rgba(169, 183, 216, 0.16);
+      border-top: 3px solid var(--blue);
+    }
+
+    .cascade-step.is-root {
+      border-top-color: var(--orange);
+      background: linear-gradient(180deg, rgba(255, 153, 92, 0.12), rgba(18, 30, 62, 0.76) 45%);
+      box-shadow: 0 0 28px rgba(255, 153, 92, 0.12);
+    }
+
+    .cascade-step.is-impact {
+      border-top-color: var(--error);
+      background: linear-gradient(180deg, rgba(240, 120, 120, 0.12), rgba(18, 30, 62, 0.76) 45%);
+    }
+
+    .cascade-step::after {
+      content: "→";
+      position: absolute;
+      right: -17px;
+      top: 46%;
+      font-family: "JetBrains Mono", Consolas, monospace;
+      font-size: 20px;
+      color: var(--orange);
+      z-index: 3;
+      text-shadow: 0 0 10px rgba(255, 153, 92, 0.7);
+    }
+
+    .cascade-step:last-child::after { display: none; }
+
+    .cascade-num {
+      font-family: "JetBrains Mono", Consolas, monospace;
+      font-size: 13px;
+      letter-spacing: 0.16em;
+      color: var(--orange);
+    }
+
+    .cascade-layer {
+      margin-top: 12px;
+      font-family: Manrope, Inter, sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text);
+    }
+
+    .cascade-event {
+      margin-top: 18px;
+      font-size: 21px;
+      line-height: 1.42;
+      color: var(--muted);
+    }
+
+    .cascade-effect {
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid rgba(169, 183, 216, 0.14);
+      font-family: "JetBrains Mono", Consolas, monospace;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      color: #c7d5f5;
+      text-transform: uppercase;
+    }
+
+    .cascade-callout {
+      margin-top: 26px;
+      padding: 20px 26px;
+      border-left: 3px solid var(--orange);
+      background: rgba(255, 153, 92, 0.07);
+      font-family: Manrope, Inter, sans-serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* ================= SLIDE 5 — THE FIVE BUGS ================= */
     .diagnostic-list {
       position: relative;
-      margin-top: 32px;
+      margin-top: 26px;
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -519,10 +719,10 @@
       flex: 1 1 0;
       min-height: 92px;
       display: grid;
-      grid-template-columns: 104px 470px minmax(0, 1fr) 132px;
+      grid-template-columns: 104px 440px minmax(0, 1fr) 132px;
       column-gap: 20px;
       align-items: center;
-      background: rgba(23, 37, 75, 0.72);
+      background: rgba(23, 37, 75, 0.68);
       border: 1px solid rgba(169, 183, 216, 0.16);
     }
 
@@ -544,16 +744,21 @@
     .diagnostic-name {
       font-family: Manrope, Inter, sans-serif;
       font-weight: 700;
-      font-size: 26px;
-      letter-spacing: 0.03em;
+      font-size: 24px;
+      letter-spacing: 0.02em;
       color: var(--text);
     }
 
     .diagnostic-symptom {
-      font-size: 24px;
+      font-size: 23px;
       line-height: 1.3;
       color: var(--muted);
       padding-right: 12px;
+    }
+
+    .diagnostic-symptom strong {
+      color: var(--text);
+      font-weight: 600;
     }
 
     .diagnostic-status {
@@ -576,10 +781,10 @@
       vertical-align: 1px;
     }
 
-    /* Slide 4 */
+    /* ================= SLIDE 6 — APPLYING THE PATCHES ================= */
     .comparison {
       flex: 1;
-      margin-top: 28px;
+      margin-top: 24px;
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -588,7 +793,7 @@
     .comparison-heading,
     .comparison-row {
       display: grid;
-      grid-template-columns: 1fr 72px 1.15fr;
+      grid-template-columns: 0.92fr 68px 1.25fr;
       align-items: center;
     }
 
@@ -596,76 +801,69 @@
       padding: 0 28px 6px;
       font-size: 14px;
       letter-spacing: 0.16em;
-      color: #e7a398;
+      color: #f0a69a;
     }
 
     .comparison-heading span:last-child {
       grid-column: 3;
-      color: #9ddec0;
+      color: var(--green);
     }
 
     .comparison-row {
       flex: 1;
-      min-height: 72px;
+      min-height: 76px;
       padding: 0 28px;
       background:
-        linear-gradient(90deg, rgba(240, 120, 120, 0.1), rgba(240, 120, 120, 0.03) 42%, rgba(112, 214, 160, 0.04) 58%, rgba(112, 214, 160, 0.12));
+        linear-gradient(90deg, rgba(255, 153, 92, 0.10), rgba(255, 153, 92, 0.03) 40%, rgba(112, 214, 160, 0.04) 56%, rgba(112, 214, 160, 0.13));
       border: 1px solid rgba(169, 183, 216, 0.14);
     }
 
     .before {
-      font-size: 25px;
-      color: #f0a69a;
+      font-size: 22px;
+      color: #f3b09c;
     }
 
     .after {
       font-family: Manrope, Inter, sans-serif;
       font-weight: 700;
-      font-size: 28px;
-      letter-spacing: -0.02em;
-      color: #e9fff4;
+      font-size: 24px;
+      letter-spacing: -0.015em;
+      color: #eafff4;
+    }
+
+    .after span {
+      display: inline-block;
+      margin-right: 10px;
+      font-family: "JetBrains Mono", Consolas, monospace;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      color: var(--green);
+      vertical-align: 2px;
     }
 
     .transformation-arrow {
       text-align: center;
-      font-size: 28px;
-      color: #9eb6ff;
-      text-shadow: 0 0 14px rgba(100, 142, 255, 0.85);
+      font-size: 26px;
+      color: var(--green);
+      text-shadow: 0 0 12px rgba(112, 214, 160, 0.65);
     }
 
     .key-insight {
-      margin-top: 28px;
+      margin-top: 24px;
       font-family: Manrope, Inter, sans-serif;
       font-weight: 700;
-      font-size: 30px;
+      font-size: 28px;
       line-height: 1.3;
       letter-spacing: -0.02em;
-      max-width: 1100px;
+      max-width: 1180px;
     }
 
-    /* Slide 5 */
-    .slide-05 .section-heading h2 span {
-      color: var(--blue);
-    }
+    /* ================= SLIDE 7 — AI ENGINEERING TEST ================= */
+    .slide-07 .section-heading h2 span { color: var(--blue); }
 
     .workflow {
       position: relative;
-      margin-top: 28px;
-    }
-
-    .workflow-nodes { position: relative; }
-
-    .circuit {
-      position: absolute;
-      left: -8px;
-      right: -8px;
-      top: 50%;
-      height: 78px;
-      width: auto;
-      transform: translateY(-50%);
-      opacity: 0.5;
-      pointer-events: none;
-      z-index: 0;
+      margin-top: 24px;
     }
 
     .workflow-label {
@@ -674,7 +872,7 @@
       font-size: 14px;
       letter-spacing: 0.18em;
       color: var(--blue);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .workflow-nodes {
@@ -685,18 +883,31 @@
       gap: 16px;
     }
 
+    .circuit {
+      position: absolute;
+      left: -8px;
+      right: -8px;
+      top: 50%;
+      height: 70px;
+      width: auto;
+      transform: translateY(-50%);
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 0;
+    }
+
     .workflow-node {
       position: relative;
       z-index: 1;
       flex: 1;
       text-align: center;
       font-family: "JetBrains Mono", Consolas, monospace;
-      font-size: 16px;
+      font-size: 15px;
       letter-spacing: 0.12em;
       color: var(--text);
-      padding: 20px 10px;
+      padding: 18px 10px;
       border: 1px solid rgba(100, 142, 255, 0.72);
-      background: #162448;
+      background: #142144;
       box-shadow: 0 0 24px rgba(100, 142, 255, 0.08);
     }
 
@@ -708,26 +919,33 @@
       text-shadow: 0 0 10px rgba(255, 153, 92, 0.45);
     }
 
-    .failure-points {
-      position: relative;
-      z-index: 1;
+    .ai-incident-box {
       flex: 1;
-      margin-top: 26px;
-      padding-top: 22px;
-      border-top: 1px solid rgba(169, 183, 216, 0.18);
+      margin-top: 22px;
+      padding: 24px 28px;
+      background: rgba(14, 23, 49, 0.72);
+      border: 1px solid rgba(169, 183, 216, 0.16);
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 14px;
+      gap: 12px;
+    }
+
+    .ai-incident-title {
+      font-family: "JetBrains Mono", Consolas, monospace;
+      font-size: 13px;
+      letter-spacing: 0.16em;
+      color: var(--orange);
+      margin-bottom: 4px;
     }
 
     .failure-point {
       display: grid;
       grid-template-columns: 78px 1fr;
       align-items: center;
-      min-height: 48px;
-      font-size: 25px;
-      line-height: 1.3;
+      min-height: 44px;
+      font-size: 23px;
+      line-height: 1.32;
       color: var(--text);
     }
 
@@ -751,13 +969,15 @@
       filter: drop-shadow(0 0 5px rgba(255, 153, 92, 0.85));
     }
 
-    .slide-05 .key-insight {
-      margin-top: 26px;
+    .slide-07 .key-insight {
+      margin-top: 22px;
       font-size: 26px;
-      max-width: 980px;
+      max-width: 1120px;
     }
 
-    /* Slide 6 */
+    .slide-07 .key-insight span { color: var(--orange); }
+
+    /* ================= SLIDE 8 — CLOSE THE LOOP (CINEMATIC) ================= */
     .closing-orb {
       position: absolute;
       width: 760px;
@@ -771,44 +991,85 @@
     .closing-glow {
       position: absolute;
       inset: 0;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 42% 40%, rgba(232, 238, 255, 0.85) 0%, #8eabff 16%, #648EFF 34%, rgba(100, 142, 255, 0.2) 58%, transparent 70%);
-      filter: blur(2px);
-      box-shadow:
-        0 0 80px 20px rgba(100, 142, 255, 0.25),
-        0 0 140px 40px rgba(255, 153, 92, 0.08);
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .svg-defs {
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .shooting-stars {
+      position: absolute;
+      inset: 0 0 34% 38%;
+      z-index: 1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .shooting-stars i {
+      position: absolute;
+      width: 190px;
+      height: 1.6px;
+      border-radius: 2px;
+      opacity: 0;
+      transform-origin: left center;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.98), rgba(180, 205, 255, 0.5) 28%, transparent);
+      filter: drop-shadow(0 0 4px rgba(190, 215, 255, 0.85));
+    }
+
+    .slide.is-active .shooting-stars i {
+      animation: shoot var(--dur, 9s) linear var(--delay, 0s) infinite;
+    }
+
+    @keyframes shoot {
+      0% { opacity: 0; transform: translate(0, 0) rotate(-31deg) scaleX(0.25); }
+      2% { opacity: 1; }
+      11% { opacity: 0; transform: translate(-560px, 336px) rotate(-31deg) scaleX(1); }
+      100% { opacity: 0; transform: translate(-560px, 336px) rotate(-31deg) scaleX(1); }
     }
 
     .closing-ring {
       position: absolute;
       inset: 28px;
       border-radius: 50%;
-      border: 1.5px solid rgba(255, 153, 92, 0.42);
+      border: 1.5px solid rgba(255, 153, 92, 0.4);
       transform: rotate(-12deg) scaleY(0.94);
     }
 
-    .slide-06 .slide-content {
+    .slide-08 .slide-content {
       width: 100%;
       height: 100%;
       display: flex;
       flex-direction: column;
-      padding: 76px 460px 48px 108px;
+      padding: 68px 460px 46px 104px;
+    }
+
+    .callback-note {
+      margin-top: 22px;
+      font-size: 22px;
+      line-height: 1.4;
+      color: var(--muted);
+      max-width: 820px;
     }
 
     .closing-question h2 {
-      margin-top: 48px;
-      max-width: 860px;
-      font-size: 64px;
-      line-height: 1.06;
+      margin-top: 26px;
+      max-width: 900px;
+      font-size: 58px;
+      line-height: 1.08;
       font-weight: 700;
     }
 
     .reflection-questions {
-      margin-top: 42px;
+      margin-top: 34px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 18px;
       max-width: 920px;
     }
 
@@ -827,36 +1088,79 @@
     }
 
     .reflection-item p {
-      font-size: 27px;
+      font-size: 26px;
       line-height: 1.35;
       color: var(--text);
     }
 
     .closing-statement {
       margin-top: auto;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
       max-width: 1080px;
     }
 
     .closing-statement p {
       font-family: Manrope, Inter, sans-serif;
       font-weight: 600;
-      font-size: 22px;
+      font-size: 21px;
       letter-spacing: 0.04em;
       color: var(--text);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .closing-statement h2 {
       display: block;
-      font-size: 48px;
+      font-size: 45px;
       line-height: 1.12;
       font-weight: 800;
       letter-spacing: -0.03em;
-      max-width: 920px;
+      max-width: 960px;
     }
 
-    /* Controls */
+    /* ================= SLIDE 9 — THANK YOU + JOKE ================= */
+    .slide-09 .slide-content {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 76px 480px 64px 104px;
+    }
+
+    .slide-09 .thank-you {
+      margin-top: 22px;
+      font-family: Manrope, Inter, sans-serif;
+      font-size: 96px;
+      font-weight: 800;
+      letter-spacing: -0.045em;
+      line-height: 0.95;
+    }
+
+    .slide-09 .thank-sub {
+      margin-top: 26px;
+      max-width: 780px;
+      font-size: 26px;
+      line-height: 1.4;
+      color: var(--muted);
+    }
+
+    .slide-09 .thank-joke {
+      margin-top: 38px;
+      max-width: 820px;
+      font-family: Manrope, Inter, sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    .slide-09 .thank-joke span { color: var(--orange); }
+
+    .slide-09 .closing-footer { margin-top: 52px; }
+
+    /* ================= CONTROLS ================= */
     .presentation-controls {
       position: fixed;
       inset: 0;
@@ -879,8 +1183,9 @@
 
     .progress-fill {
       height: 100%;
-      width: 16.666%;
+      width: 11.111%;
       background: linear-gradient(90deg, var(--orange), var(--blue));
+      transition: width 0.35s var(--ease);
     }
 
     .controls-bar {
@@ -893,13 +1198,13 @@
       gap: 12px;
       padding: 8px 12px;
       pointer-events: auto;
-      background: rgba(16, 25, 54, 0.78);
+      background: rgba(10, 16, 36, 0.84);
       border: 1px solid rgba(169, 183, 216, 0.22);
       backdrop-filter: blur(12px);
     }
 
     .controls-bar button {
-      width: 36px;
+      width: 34px;
       height: 32px;
       display: grid;
       place-items: center;
@@ -911,7 +1216,7 @@
     .indicators { display: flex; align-items: center; gap: 2px; }
 
     .indicators button {
-      width: 22px;
+      width: 20px;
       height: 22px;
       position: relative;
     }
@@ -941,137 +1246,105 @@
       color: var(--muted);
     }
 
-    /* Motion */
+    /* ================= MOTION ================= */
     .slide.is-active .slide-background { animation: appear 0.8s var(--ease) both; }
     .slide.is-active .ambient-particles { animation: appear 1s var(--ease) 0.1s both; }
 
-    .slide-01.is-active .orbit { animation: appear 0.9s var(--ease) 0.2s both; }
-    .slide-01.is-active .orange-orb,
-    .slide-01.is-active .blue-orb { animation: appear 1.1s var(--ease) 0.4s both; }
-    .slide-01.is-active h1 { animation: fade-up 0.9s var(--ease) 0.55s both; }
-    .slide-01.is-active h2 { animation: fade-up 0.8s var(--ease) 0.9s both; }
-    .slide-01.is-active .hero-copy p { animation: fade-up 0.8s var(--ease) 1.1s both; }
-    .slide-01.is-active .hero-tags { animation: fade-up 0.7s var(--ease) 1.25s both; }
-    .slide-01.is-active .slide-footer { animation: appear 0.7s var(--ease) 1.5s both; }
+    .slide-01.is-active .space-scene { animation: appear 1.1s var(--ease) 0.25s both; }
+    .slide-01.is-active h1 { animation: fade-up 0.9s var(--ease) 0.4s both; }
+    .slide-01.is-active h2 { animation: fade-up 0.8s var(--ease) 0.72s both; }
+    .slide-01.is-active .hero-copy p { animation: fade-up 0.8s var(--ease) 0.9s both; }
+    .slide-01.is-active .hero-tags { animation: fade-up 0.7s var(--ease) 1.05s both; }
+    .slide-01.is-active .presenter-card { animation: fade-up 0.7s var(--ease) 1.2s both; }
+    .slide-01.is-active .slide-footer { animation: appear 0.7s var(--ease) 1.38s both; }
 
-    .slide-02.is-active .text-column h2 { animation: fade-up 0.7s var(--ease) 0.15s both; }
-    .slide-02.is-active .text-column .lead { animation: fade-up 0.7s var(--ease) 0.3s both; }
-    .slide-02.is-active .text-column .supporting-text { animation: fade-up 0.7s var(--ease) 0.42s both; }
-    .slide-02.is-active .diagnostic-label { animation: appear 0.6s var(--ease) 0.6s both; }
-    .slide-02.is-active .dep { animation: appear 0.8s var(--ease) 0.2s both; }
-    .slide-02.is-active .shape-1,
-    .slide-02.is-active .level-1 { animation: fade-up 0.6s var(--ease) 0.28s both; }
-    .slide-02.is-active .shape-2,
-    .slide-02.is-active .level-2 { animation: fade-up 0.6s var(--ease) 0.42s both; }
-    .slide-02.is-active .shape-3,
-    .slide-02.is-active .level-3 { animation: fade-up 0.6s var(--ease) 0.56s both; }
-    .slide-02.is-active .shape-4,
-    .slide-02.is-active .level-4 { animation: fade-up 0.6s var(--ease) 0.7s both; }
-    .slide-02.is-active .shape-5,
-    .slide-02.is-active .level-5 { animation: fade-up 0.6s var(--ease) 0.84s both; }
+    .slide-02.is-active .incident-brief { animation: fade-up 0.7s var(--ease) 0.15s both; }
+    .slide-02.is-active .telemetry-row { animation: fade-up 0.55s var(--ease) both; }
+    .slide-02.is-active .telemetry-row:nth-child(2) { animation-delay: 0.2s; }
+    .slide-02.is-active .telemetry-row:nth-child(3) { animation-delay: 0.3s; }
+    .slide-02.is-active .telemetry-row:nth-child(4) { animation-delay: 0.4s; }
+    .slide-02.is-active .telemetry-row:nth-child(5) { animation-delay: 0.5s; }
+    .slide-02.is-active .telemetry-alert { animation: fade-up 0.65s var(--ease) 0.7s both; }
 
-    .slide-03.is-active .diagnostic-row { animation: fade-up 0.55s var(--ease) both; }
-    .slide-03.is-active .diagnostic-row:nth-child(1) { animation-delay: 0.12s; }
-    .slide-03.is-active .diagnostic-row:nth-child(2) { animation-delay: 0.22s; }
-    .slide-03.is-active .diagnostic-row:nth-child(3) { animation-delay: 0.32s; }
-    .slide-03.is-active .diagnostic-row:nth-child(4) { animation-delay: 0.42s; }
-    .slide-03.is-active .diagnostic-row:nth-child(5) { animation-delay: 0.52s; }
+    .slide-03.is-active .text-column h2 { animation: fade-up 0.7s var(--ease) 0.15s both; }
+    .slide-03.is-active .text-column .lead { animation: fade-up 0.7s var(--ease) 0.3s both; }
+    .slide-03.is-active .text-column .supporting-text { animation: fade-up 0.7s var(--ease) 0.42s both; }
+    .slide-03.is-active .diagnostic-label { animation: appear 0.6s var(--ease) 0.6s both; }
+    .slide-03.is-active .dep { animation: appear 0.8s var(--ease) 0.2s both; }
+    .slide-03.is-active .shape-1, .slide-03.is-active .level-1 { animation: fade-up 0.6s var(--ease) 0.28s both; }
+    .slide-03.is-active .shape-2, .slide-03.is-active .level-2 { animation: fade-up 0.6s var(--ease) 0.42s both; }
+    .slide-03.is-active .shape-3, .slide-03.is-active .level-3 { animation: fade-up 0.6s var(--ease) 0.56s both; }
+    .slide-03.is-active .shape-4, .slide-03.is-active .level-4 { animation: fade-up 0.6s var(--ease) 0.7s both; }
+    .slide-03.is-active .shape-5, .slide-03.is-active .level-5 { animation: fade-up 0.6s var(--ease) 0.84s both; }
 
-    .slide-04.is-active .comparison-row .before,
-    .slide-04.is-active .comparison-row .transformation-arrow,
-    .slide-04.is-active .comparison-row .after { animation: fade-up 0.45s var(--ease) both; }
-    .slide-04.is-active .comparison-row:nth-child(2) .before { animation-delay: 0.15s; }
-    .slide-04.is-active .comparison-row:nth-child(2) .transformation-arrow { animation-delay: 0.28s; }
-    .slide-04.is-active .comparison-row:nth-child(2) .after { animation-delay: 0.4s; }
-    .slide-04.is-active .comparison-row:nth-child(3) .before { animation-delay: 0.4s; }
-    .slide-04.is-active .comparison-row:nth-child(3) .transformation-arrow { animation-delay: 0.53s; }
-    .slide-04.is-active .comparison-row:nth-child(3) .after { animation-delay: 0.65s; }
-    .slide-04.is-active .comparison-row:nth-child(4) .before { animation-delay: 0.65s; }
-    .slide-04.is-active .comparison-row:nth-child(4) .transformation-arrow { animation-delay: 0.78s; }
-    .slide-04.is-active .comparison-row:nth-child(4) .after { animation-delay: 0.9s; }
-    .slide-04.is-active .comparison-row:nth-child(5) .before { animation-delay: 0.9s; }
-    .slide-04.is-active .comparison-row:nth-child(5) .transformation-arrow { animation-delay: 1.03s; }
-    .slide-04.is-active .comparison-row:nth-child(5) .after { animation-delay: 1.15s; }
-    .slide-04.is-active .comparison-row:nth-child(6) .before { animation-delay: 1.15s; }
-    .slide-04.is-active .comparison-row:nth-child(6) .transformation-arrow { animation-delay: 1.28s; }
-    .slide-04.is-active .comparison-row:nth-child(6) .after { animation-delay: 1.4s; }
-    .slide-04.is-active .key-insight { animation: fade-up 0.7s var(--ease) 1.55s both; }
+    .slide-04.is-active .cascade-step { animation: fade-up 0.6s var(--ease) both; }
+    .slide-04.is-active .cascade-step:nth-child(1) { animation-delay: 0.14s; }
+    .slide-04.is-active .cascade-step:nth-child(2) { animation-delay: 0.28s; }
+    .slide-04.is-active .cascade-step:nth-child(3) { animation-delay: 0.42s; }
+    .slide-04.is-active .cascade-step:nth-child(4) { animation-delay: 0.56s; }
+    .slide-04.is-active .cascade-step:nth-child(5) { animation-delay: 0.70s; }
+    .slide-04.is-active .cascade-callout { animation: fade-up 0.7s var(--ease) 0.9s both; }
 
-    .slide-05.is-active .workflow-node,
-    .slide-05.is-active .workflow-arrow { animation: fade-up 0.5s var(--ease) both; }
-    .slide-05.is-active .workflow-node:nth-child(1) { animation-delay: 0.15s; }
-    .slide-05.is-active .workflow-arrow:nth-child(2) { animation-delay: 0.25s; }
-    .slide-05.is-active .workflow-node:nth-child(3) { animation-delay: 0.35s; }
-    .slide-05.is-active .workflow-arrow:nth-child(4) { animation-delay: 0.45s; }
-    .slide-05.is-active .workflow-node:nth-child(5) { animation-delay: 0.55s; }
-    .slide-05.is-active .workflow-arrow:nth-child(6) { animation-delay: 0.65s; }
-    .slide-05.is-active .workflow-node:nth-child(7) { animation-delay: 0.75s; }
-    .slide-05.is-active .failure-point { animation: fade-up 0.5s var(--ease) both; }
-    .slide-05.is-active .failure-point:nth-child(1) { animation-delay: 0.7s; }
-    .slide-05.is-active .failure-point:nth-child(2) { animation-delay: 0.82s; }
-    .slide-05.is-active .failure-point:nth-child(3) { animation-delay: 0.94s; }
-    .slide-05.is-active .failure-point:nth-child(4) { animation-delay: 1.06s; }
-    .slide-05.is-active .failure-point:nth-child(5) { animation-delay: 1.18s; }
-    .slide-05.is-active .key-insight { animation: appear 0.8s var(--ease) 1.35s both; }
+    .slide-05.is-active .diagnostic-row { animation: fade-up 0.55s var(--ease) both; }
+    .slide-05.is-active .diagnostic-row:nth-child(1) { animation-delay: 0.12s; }
+    .slide-05.is-active .diagnostic-row:nth-child(2) { animation-delay: 0.22s; }
+    .slide-05.is-active .diagnostic-row:nth-child(3) { animation-delay: 0.32s; }
+    .slide-05.is-active .diagnostic-row:nth-child(4) { animation-delay: 0.42s; }
+    .slide-05.is-active .diagnostic-row:nth-child(5) { animation-delay: 0.52s; }
 
-    .slide-06.is-active .closing-glow,
-    .slide-06.is-active .closing-ring { animation: appear 1.1s var(--ease) 0.2s both; }
-    .slide-06.is-active .closing-question h2 { animation: fade-up 0.8s var(--ease) 0.3s both; }
-    .slide-06.is-active .reflection-item:nth-child(1) { animation: fade-up 0.7s var(--ease) 0.6s both; }
-    .slide-06.is-active .reflection-item:nth-child(2) { animation: fade-up 0.7s var(--ease) 1s both; }
-    .slide-06.is-active .reflection-item:nth-child(3) { animation: fade-up 0.7s var(--ease) 1.4s both; }
-    .slide-06.is-active .closing-statement { animation: appear 1.6s var(--ease) 1.9s both; }
-    .slide-06.is-active .closing-footer { animation: appear 0.8s var(--ease) 2.6s both; }
+    .slide-06.is-active .comparison-row .before,
+    .slide-06.is-active .comparison-row .transformation-arrow,
+    .slide-06.is-active .comparison-row .after { animation: fade-up 0.45s var(--ease) both; }
+    .slide-06.is-active .comparison-row:nth-child(2) .before { animation-delay: 0.14s; }
+    .slide-06.is-active .comparison-row:nth-child(2) .transformation-arrow { animation-delay: 0.26s; }
+    .slide-06.is-active .comparison-row:nth-child(2) .after { animation-delay: 0.38s; }
+    .slide-06.is-active .comparison-row:nth-child(3) .before { animation-delay: 0.36s; }
+    .slide-06.is-active .comparison-row:nth-child(3) .transformation-arrow { animation-delay: 0.48s; }
+    .slide-06.is-active .comparison-row:nth-child(3) .after { animation-delay: 0.60s; }
+    .slide-06.is-active .comparison-row:nth-child(4) .before { animation-delay: 0.58s; }
+    .slide-06.is-active .comparison-row:nth-child(4) .transformation-arrow { animation-delay: 0.70s; }
+    .slide-06.is-active .comparison-row:nth-child(4) .after { animation-delay: 0.82s; }
+    .slide-06.is-active .comparison-row:nth-child(5) .before { animation-delay: 0.80s; }
+    .slide-06.is-active .comparison-row:nth-child(5) .transformation-arrow { animation-delay: 0.92s; }
+    .slide-06.is-active .comparison-row:nth-child(5) .after { animation-delay: 1.04s; }
+    .slide-06.is-active .comparison-row:nth-child(6) .before { animation-delay: 1.02s; }
+    .slide-06.is-active .comparison-row:nth-child(6) .transformation-arrow { animation-delay: 1.14s; }
+    .slide-06.is-active .comparison-row:nth-child(6) .after { animation-delay: 1.26s; }
+    .slide-06.is-active .key-insight { animation: fade-up 0.7s var(--ease) 1.4s both; }
 
-    .slide-01.is-active .presenter-card { animation: fade-up 0.7s var(--ease) 1.35s both; }
+    .slide-07.is-active .workflow-node,
+    .slide-07.is-active .workflow-arrow { animation: fade-up 0.5s var(--ease) both; }
+    .slide-07.is-active .workflow-node:nth-child(2) { animation-delay: 0.14s; }
+    .slide-07.is-active .workflow-arrow:nth-child(3) { animation-delay: 0.24s; }
+    .slide-07.is-active .workflow-node:nth-child(4) { animation-delay: 0.34s; }
+    .slide-07.is-active .workflow-arrow:nth-child(5) { animation-delay: 0.44s; }
+    .slide-07.is-active .workflow-node:nth-child(6) { animation-delay: 0.54s; }
+    .slide-07.is-active .workflow-arrow:nth-child(7) { animation-delay: 0.64s; }
+    .slide-07.is-active .workflow-node:nth-child(8) { animation-delay: 0.74s; }
+    .slide-07.is-active .failure-point { animation: fade-up 0.5s var(--ease) both; }
+    .slide-07.is-active .failure-point:nth-child(2) { animation-delay: 0.65s; }
+    .slide-07.is-active .failure-point:nth-child(3) { animation-delay: 0.77s; }
+    .slide-07.is-active .failure-point:nth-child(4) { animation-delay: 0.89s; }
+    .slide-07.is-active .failure-point:nth-child(5) { animation-delay: 1.01s; }
+    .slide-07.is-active .failure-point:nth-child(6) { animation-delay: 1.13s; }
+    .slide-07.is-active .key-insight { animation: appear 0.8s var(--ease) 1.3s both; }
 
-    .slide-07 .slide-content {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      padding: 76px 480px 64px 108px;
-    }
+    .slide-08.is-active .closing-glow,
+    .slide-08.is-active .closing-ring { animation: appear 1.1s var(--ease) 0.2s both; }
+    .slide-08.is-active .callback-note { animation: fade-up 0.7s var(--ease) 0.25s both; }
+    .slide-08.is-active .closing-question h2 { animation: fade-up 0.8s var(--ease) 0.4s both; }
+    .slide-08.is-active .reflection-item:nth-child(1) { animation: fade-up 0.7s var(--ease) 0.7s both; }
+    .slide-08.is-active .reflection-item:nth-child(2) { animation: fade-up 0.7s var(--ease) 1.05s both; }
+    .slide-08.is-active .reflection-item:nth-child(3) { animation: fade-up 0.7s var(--ease) 1.4s both; }
+    .slide-08.is-active .closing-statement { animation: appear 1.5s var(--ease) 1.85s both; }
+    .slide-08.is-active .closing-footer { animation: appear 0.8s var(--ease) 2.4s both; }
 
-    .slide-07 .thank-you {
-      font-family: Manrope, Inter, sans-serif;
-      font-size: 96px;
-      font-weight: 800;
-      letter-spacing: -0.045em;
-      line-height: 0.95;
-    }
-
-    .slide-07 .thank-sub {
-      margin-top: 28px;
-      max-width: 760px;
-      font-size: 28px;
-      line-height: 1.4;
-      color: var(--muted);
-    }
-
-    .slide-07 .thank-joke {
-      margin-top: 36px;
-      max-width: 820px;
-      font-family: Manrope, Inter, sans-serif;
-      font-size: 32px;
-      font-weight: 600;
-      line-height: 1.35;
-      letter-spacing: -0.02em;
-      color: var(--text);
-    }
-
-    .slide-07 .thank-joke span { color: var(--orange); }
-
-    .slide-07 .closing-footer { margin-top: 48px; }
-
-    .slide-07.is-active .thank-you { animation: fade-up 0.8s var(--ease) 0.25s both; }
-    .slide-07.is-active .thank-sub { animation: fade-up 0.7s var(--ease) 0.55s both; }
-    .slide-07.is-active .thank-joke { animation: fade-up 0.8s var(--ease) 0.95s both; }
-    .slide-07.is-active .closing-footer { animation: appear 0.7s var(--ease) 1.35s both; }
-    .slide-07.is-active .closing-glow,
-    .slide-07.is-active .closing-ring { animation: appear 1.1s var(--ease) 0.2s both; }
+    .slide-09.is-active .closing-glow,
+    .slide-09.is-active .closing-ring { animation: appear 1.1s var(--ease) 0.2s both; }
+    .slide-09.is-active .thank-you { animation: fade-up 0.8s var(--ease) 0.25s both; }
+    .slide-09.is-active .thank-sub { animation: fade-up 0.7s var(--ease) 0.55s both; }
+    .slide-09.is-active .thank-joke { animation: fade-up 0.8s var(--ease) 0.95s both; }
+    .slide-09.is-active .closing-footer { animation: appear 0.7s var(--ease) 1.35s both; }
 
     @keyframes appear {
       from { opacity: 0; }
@@ -1092,18 +1365,235 @@
   </style>
 </head>
 <body>
+  <svg class="svg-defs" aria-hidden="true" focusable="false">
+    <defs>
+      <radialGradient id="eOcean" cx="36%" cy="32%" r="76%">
+        <stop offset="0%" stop-color="#4f9cf0" />
+        <stop offset="30%" stop-color="#1f5fbf" />
+        <stop offset="65%" stop-color="#123c86" />
+        <stop offset="100%" stop-color="#06173f" />
+      </radialGradient>
+      <radialGradient id="eLimb" cx="50%" cy="50%" r="50%">
+        <stop offset="80%" stop-color="#78aaff" stop-opacity="0" />
+        <stop offset="100%" stop-color="#8cb8ff" stop-opacity="0.5" />
+      </radialGradient>
+      <radialGradient id="eSpec" cx="30%" cy="27%" r="24%">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3" />
+        <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+      </radialGradient>
+      <radialGradient id="eShade" cx="32%" cy="28%" r="80%">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06" />
+        <stop offset="40%" stop-color="#000000" stop-opacity="0" />
+        <stop offset="62%" stop-color="#020611" stop-opacity="0.5" />
+        <stop offset="80%" stop-color="#01030a" stop-opacity="0.88" />
+        <stop offset="100%" stop-color="#01030a" stop-opacity="0.96" />
+      </radialGradient>
+      <radialGradient id="eAtmo" cx="50%" cy="50%" r="50%">
+        <stop offset="86%" stop-color="#8cb8ff" stop-opacity="0" />
+        <stop offset="90.5%" stop-color="#9cc4ff" stop-opacity="0.7" />
+        <stop offset="94%" stop-color="#648EFF" stop-opacity="0.3" />
+        <stop offset="100%" stop-color="#648EFF" stop-opacity="0" />
+      </radialGradient>
+      <radialGradient id="earthHalo" cx="50%" cy="50%" r="50%">
+        <stop offset="74%" stop-color="#648EFF" stop-opacity="0" />
+        <stop offset="78%" stop-color="#6e9cff" stop-opacity="0.32" />
+        <stop offset="86%" stop-color="#648EFF" stop-opacity="0.12" />
+        <stop offset="100%" stop-color="#648EFF" stop-opacity="0" />
+      </radialGradient>
+      <clipPath id="eClip">
+        <circle r="136" />
+      </clipPath>
+      <filter id="eSoft" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="4" />
+      </filter>
+      <filter id="eLand" x="-15%" y="-15%" width="130%" height="130%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" seed="5" result="warp" />
+        <feDisplacementMap in="SourceGraphic" in2="warp" scale="16" xChannelSelector="R" yChannelSelector="G" result="land" />
+        <feTurbulence type="fractalNoise" baseFrequency="0.11" numOctaves="3" seed="2" result="grain" />
+        <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0.58  0 0 0 0 0.5  0 0 0 0 0.33  1.3 0 0 0 -0.6" result="arid" />
+        <feComposite in="arid" in2="land" operator="in" result="aridLand" />
+        <feColorMatrix in="grain" type="matrix" values="0 0 0 0 0.12  0 0 0 0 0.25  0 0 0 0 0.13  -1.1 0 0 0 0.5" result="forest" />
+        <feComposite in="forest" in2="land" operator="in" result="forestLand" />
+        <feMerge>
+          <feMergeNode in="land" />
+          <feMergeNode in="forestLand" />
+          <feMergeNode in="aridLand" />
+        </feMerge>
+      </filter>
+      <filter id="eClouds" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.02 0.05" numOctaves="5" seed="11" />
+        <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  2.6 0 0 0 -1.3" />
+        <feGaussianBlur stdDeviation="1.1" />
+      </filter>
+
+      <symbol id="earth-globe" viewBox="-150 -150 300 300" overflow="visible">
+        <g clip-path="url(#eClip)">
+          <circle r="136" fill="url(#eOcean)" />
+          <g filter="url(#eLand)">
+            <path d="M-112,-76 L-88,-84 L-66,-72 L-54,-56 L-62,-40 L-50,-28 L-58,-14 L-72,-10 L-78,2 L-68,10 L-74,18 L-86,12 L-96,-4 L-110,-22 L-118,-48 Z" fill="#356f3e" />
+            <path d="M-66,18 L-48,24 L-32,40 L-26,60 L-36,84 L-50,104 L-62,110 L-68,94 L-64,70 L-74,48 L-76,28 Z" fill="#2f6a37" />
+            <path d="M6,-88 L28,-96 L52,-86 L68,-72 L56,-56 L38,-52 L24,-42 L10,-48 L2,-66 Z" fill="#46763f" />
+            <path d="M4,-34 L30,-38 L58,-28 L72,-12 L68,14 L52,38 L42,68 L28,84 L16,74 L10,44 L-2,18 L-6,-8 Z" fill="#6f7540" />
+            <path d="M66,-76 L108,-68 L132,-34 L122,4 L94,16 L76,-2 L64,-34 Z" fill="#4b7140" />
+            <path d="M96,40 L118,44 L126,62 L112,74 L96,66 Z" fill="#8a7a4e" />
+          </g>
+          <path d="M-36,-106 L-16,-110 L-10,-94 L-22,-84 L-38,-90 Z" fill="#e6f0fa" opacity="0.85" filter="url(#eSoft)" />
+          <ellipse cx="-6" cy="-136" rx="84" ry="20" fill="#eef5ff" opacity="0.75" filter="url(#eSoft)" />
+          <ellipse cx="12" cy="138" rx="76" ry="18" fill="#eef5ff" opacity="0.6" filter="url(#eSoft)" />
+          <rect x="-136" y="-136" width="272" height="272" filter="url(#eClouds)" opacity="0.88" />
+          <circle r="136" fill="url(#eLimb)" />
+          <circle r="136" fill="url(#eSpec)" />
+          <circle r="136" fill="url(#eShade)" />
+        </g>
+        <circle r="150" fill="url(#eAtmo)" />
+      </symbol>
+    </defs>
+  </svg>
+
   <div class="presentation-shell">
     <main class="presentation-viewport" id="viewport">
 
+      <!-- SLIDE 1: CINEMATIC OPENING (SATURN + EARTH IN DEEP SPACE) -->
       <section class="slide slide-01 cinematic is-active" aria-label="Debugging a Team">
         <div class="slide-background"></div>
         <div class="ambient-particles"></div>
 
-        <div class="orbital-visual" aria-hidden="true">
-          <div class="orange-orb"></div>
-          <div class="blue-orb"></div>
-          <div class="orbit orbit-one"></div>
-          <div class="orbit orbit-two"></div>
+        <div class="shooting-stars" aria-hidden="true">
+          <i style="top: 6%; left: 70%; --delay: 0.8s; --dur: 8s"></i>
+          <i style="top: 22%; left: 98%; --delay: 3.6s; --dur: 11s"></i>
+          <i style="top: 3%; left: 48%; --delay: 6.2s; --dur: 9.5s"></i>
+          <i style="top: 40%; left: 92%; --delay: 9s; --dur: 13s"></i>
+        </div>
+
+        <div class="space-scene" aria-hidden="true">
+          <svg viewBox="0 0 1040 1080" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <!-- Deep space ambient glows -->
+              <radialGradient id="saturnGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#FF995C" stop-opacity="0.34" />
+                <stop offset="55%" stop-color="#d48952" stop-opacity="0.09" />
+                <stop offset="100%" stop-color="#040712" stop-opacity="0" />
+              </radialGradient>
+              <radialGradient id="earthGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#648EFF" stop-opacity="0.38" />
+                <stop offset="55%" stop-color="#3c6ef0" stop-opacity="0.12" />
+                <stop offset="100%" stop-color="#040712" stop-opacity="0" />
+              </radialGradient>
+
+              <!-- Saturn body gradients -->
+              <linearGradient id="saturnBands" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#e9c89d" />
+                <stop offset="14%" stop-color="#d3a06a" />
+                <stop offset="28%" stop-color="#f3d8b2" />
+                <stop offset="44%" stop-color="#c98952" />
+                <stop offset="58%" stop-color="#e5ba86" />
+                <stop offset="72%" stop-color="#a8683a" />
+                <stop offset="86%" stop-color="#c48a5b" />
+                <stop offset="100%" stop-color="#6a3e22" />
+              </linearGradient>
+              <radialGradient id="saturnShade" cx="30%" cy="28%" r="72%">
+                <stop offset="0%" stop-color="#fff4e0" stop-opacity="0.32" />
+                <stop offset="52%" stop-color="#000000" stop-opacity="0" />
+                <stop offset="84%" stop-color="#060814" stop-opacity="0.58" />
+                <stop offset="100%" stop-color="#03050d" stop-opacity="0.85" />
+              </radialGradient>
+              <linearGradient id="ringTone" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#9e7450" stop-opacity="0.45" />
+                <stop offset="22%" stop-color="#f0d3ad" stop-opacity="0.88" />
+                <stop offset="50%" stop-color="#ffdcb4" stop-opacity="0.95" />
+                <stop offset="78%" stop-color="#cfa274" stop-opacity="0.72" />
+                <stop offset="100%" stop-color="#6e4b30" stop-opacity="0.35" />
+              </linearGradient>
+              <clipPath id="saturnClip">
+                <ellipse cx="0" cy="0" rx="170" ry="156" />
+              </clipPath>
+              <radialGradient id="ringBands" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="400"></radialGradient>
+              <filter id="ringGrain" x="0" y="0" width="100%" height="100%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="21" />
+                <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 0.95  0 0 0 0 0.86  4 0 0 0 -2.5" />
+              </filter>
+              <filter id="saturnTexture" x="0" y="0" width="100%" height="100%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.0025 0.07" numOctaves="4" seed="4" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0.42  0 0 0 0 0.27  0 0 0 0 0.14  1.6 0 0 0 -0.55" />
+              </filter>
+              <filter id="saturnHighlights" x="0" y="0" width="100%" height="100%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.003 0.05" numOctaves="3" seed="9" />
+                <feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 0.93  0 0 0 0 0.8  1.8 0 0 0 -1.0" />
+              </filter>
+              <g id="saturn-rings">
+                <circle r="400" fill="url(#ringBands)" transform="scale(1 0.3)" />
+              </g>
+              <mask id="ringAlpha" style="mask-type: alpha">
+                <use href="#saturn-rings" />
+              </mask>
+              <!-- Ring front/back clips -->
+              <clipPath id="ringBackClip">
+                <rect x="-500" y="-220" width="1000" height="220" />
+              </clipPath>
+              <clipPath id="ringFrontClip">
+                <rect x="-500" y="0" width="1000" height="220" />
+              </clipPath>
+
+              <!-- Earth gradients & clip -->
+              <radialGradient id="earthOcean" cx="34%" cy="32%" r="72%">
+                <stop offset="0%" stop-color="#5da8ff" />
+                <stop offset="35%" stop-color="#2962c9" />
+                <stop offset="72%" stop-color="#14327a" />
+                <stop offset="100%" stop-color="#071336" />
+              </radialGradient>
+              <radialGradient id="earthShade" cx="32%" cy="30%" r="70%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.16" />
+                <stop offset="56%" stop-color="#000000" stop-opacity="0" />
+                <stop offset="82%" stop-color="#040817" stop-opacity="0.62" />
+                <stop offset="100%" stop-color="#02050f" stop-opacity="0.92" />
+              </radialGradient>
+              <clipPath id="earthClip">
+                <circle cx="0" cy="0" r="136" />
+              </clipPath>
+              <filter id="softBlur" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="4" />
+              </filter>
+            </defs>
+
+            <!-- Distant subtle orbital arc -->
+            <circle cx="700" cy="280" r="460" fill="none" stroke="rgba(169,183,216,0.1)" stroke-width="1" stroke-dasharray="4 10" />
+
+            <!-- SATURN (upper right) -->
+            <g transform="translate(700, 280) rotate(-20)">
+              <circle cx="0" cy="0" r="330" fill="url(#saturnGlow)" />
+
+              <g id="belt-back"></g>
+
+              <g clip-path="url(#ringBackClip)">
+                <use href="#saturn-rings" opacity="0.92" />
+                <rect x="-420" y="-130" width="840" height="260" filter="url(#ringGrain)" opacity="0.28" mask="url(#ringAlpha)" />
+                <path d="M110,-6 L420,-70 L420,-128 L130,-150 Z" fill="#03050d" opacity="0.72" mask="url(#ringAlpha)" filter="url(#softBlur)" />
+              </g>
+
+              <g clip-path="url(#saturnClip)">
+                <ellipse cx="0" cy="0" rx="170" ry="156" fill="url(#saturnBands)" />
+                <rect x="-175" y="-165" width="350" height="330" filter="url(#saturnTexture)" opacity="0.6" />
+                <rect x="-175" y="-165" width="350" height="330" filter="url(#saturnHighlights)" opacity="0.35" />
+                <ellipse cx="0" cy="-130" rx="104" ry="40" fill="#9aa6b8" opacity="0.18" filter="url(#softBlur)" />
+                <ellipse cx="0" cy="24" rx="262" ry="80" fill="none" stroke="#050814" stroke-width="22" opacity="0.5" filter="url(#softBlur)" />
+                <ellipse cx="0" cy="0" rx="170" ry="156" fill="url(#saturnShade)" />
+              </g>
+              <ellipse cx="0" cy="0" rx="170" ry="156" fill="none" stroke="rgba(255,214,170,0.2)" stroke-width="1.1" />
+
+              <g clip-path="url(#ringFrontClip)">
+                <use href="#saturn-rings" />
+                <rect x="-420" y="-130" width="840" height="260" filter="url(#ringGrain)" opacity="0.32" mask="url(#ringAlpha)" />
+              </g>
+
+              <g id="belt-front"></g>
+            </g>
+
+            <!-- EARTH (lower right) -->
+            <g transform="translate(650, 775)">
+              <circle cx="0" cy="0" r="245" fill="url(#earthGlow)" />
+              <use href="#earth-globe" x="-150" y="-150" width="300" height="300" />
+            </g>
+          </svg>
         </div>
 
         <div class="slide-content">
@@ -1146,14 +1636,94 @@
         </div>
       </section>
 
-      <section class="slide slide-02 technical" aria-label="Root cause analysis" aria-hidden="true">
+      <!-- SLIDE 2: THE INCIDENT (DECISIONTECH) -->
+      <section class="slide slide-02 technical" aria-label="Incident 001: DecisionTech" aria-hidden="true">
         <div class="slide-background"></div>
         <div class="tech-texture" aria-hidden="true"></div>
         <div class="slide-content">
 
           <header class="slide-header">
-            <div class="eyebrow">02 / SYSTEM ANALYSIS</div>
-            <div class="slide-number">02 / 07</div>
+            <div class="eyebrow">02 / THE INCIDENT</div>
+            <div class="slide-number">02 / 09</div>
+          </header>
+
+          <div class="section-heading">
+            <h2>A brilliant team. A failing company. What went wrong?</h2>
+            <p>Before the theory, start with the case study from Patrick Lencioni's fable.</p>
+          </div>
+
+          <div class="incident-grid">
+            <div class="incident-brief">
+              <div class="incident-tag">INCIDENT #001 · DECISIONTECH</div>
+              <h3>
+                Every component looked <span>healthy.</span><br />
+                The system still failed.
+              </h3>
+              <p>
+                DecisionTech had a veteran leadership team, deeper funding, stronger core technology, and a well-connected board—yet it kept falling behind two competitors in revenue and customer growth.
+              </p>
+              <div class="incident-quote">
+                “Not finance. Not strategy. Not technology. It is teamwork that remains the ultimate competitive advantage.”
+                <span>PATRICK LENCIONI · INTRODUCTION</span>
+              </div>
+            </div>
+
+            <div class="telemetry-panel">
+              <div class="telemetry-head">
+                <span>SYSTEM TELEMETRY</span>
+                <span>PRE-DIAGNOSIS</span>
+              </div>
+
+              <div class="telemetry-row">
+                <div>
+                  <div class="telemetry-label">Executive Talent</div>
+                  <div class="telemetry-sub">More experienced leadership than competitors</div>
+                </div>
+                <span class="status-pill">GREEN · OK</span>
+              </div>
+
+              <div class="telemetry-row">
+                <div>
+                  <div class="telemetry-label">Core Technology</div>
+                  <div class="telemetry-sub">Stronger engineering and product architecture</div>
+                </div>
+                <span class="status-pill">GREEN · OK</span>
+              </div>
+
+              <div class="telemetry-row">
+                <div>
+                  <div class="telemetry-label">Capital &amp; Board</div>
+                  <div class="telemetry-sub">More cash and better industry connections</div>
+                </div>
+                <span class="status-pill">GREEN · OK</span>
+              </div>
+
+              <div class="telemetry-alert">
+                <div>
+                  <div class="telemetry-label">Overall System Output</div>
+                  <div class="telemetry-sub">Trailing rivals · politics · missed goals</div>
+                </div>
+                <span class="status-pill">FAILING</span>
+              </div>
+            </div>
+          </div>
+
+          <footer class="slide-footer">
+            COMPONENT HEALTH: GREEN · SYSTEM HEALTH: FAILING
+          </footer>
+
+        </div>
+      </section>
+
+      <!-- SLIDE 3: ROOT CAUSE ANALYSIS (EXACT PYRAMID KEPT) -->
+      <section class="slide slide-03 technical" aria-label="Root cause analysis" aria-hidden="true">
+        <div class="slide-background"></div>
+        <div class="tech-texture" aria-hidden="true"></div>
+        <div class="slide-content">
+
+          <header class="slide-header">
+            <div class="eyebrow">03 / SYSTEM ANALYSIS</div>
+            <div class="slide-number">03 / 09</div>
           </header>
 
           <div class="two-column-layout">
@@ -1167,13 +1737,13 @@
 
               <p class="lead">
                 Five dysfunctions form one<br />
-                interconnected model.
+                interconnected dependency stack.
               </p>
 
               <p class="supporting-text">
+                These are not five separate bugs.<br />
                 A weakness at the foundation<br />
-                can affect everything built<br />
-                above it.
+                breaks everything built above it.
               </p>
 
               <div class="diagnostic-label">
@@ -1245,19 +1815,84 @@
         </div>
       </section>
 
-      <section class="slide slide-03 technical" aria-label="The five bugs" aria-hidden="true">
+      <!-- SLIDE 4: FAILURE PROPAGATION (THE CASCADE) -->
+      <section class="slide slide-04 technical" aria-label="Failure propagation" aria-hidden="true">
+        <div class="slide-background"></div>
+        <div class="tech-texture" aria-hidden="true"></div>
+        <div class="slide-content">
+
+          <header class="slide-header accent-blue">
+            <div class="eyebrow is-blue">04 / FAILURE PROPAGATION</div>
+            <div class="slide-number">04 / 09</div>
+          </header>
+
+          <div class="section-heading">
+            <h2>How one hidden mistake brings down the release.</h2>
+            <p>The pyramid is the model. The chain reaction is why teams actually fail.</p>
+          </div>
+
+          <div class="cascade-track">
+            <div class="cascade-step is-root">
+              <div class="cascade-num">STEP 01 · ROOT</div>
+              <div class="cascade-layer">No Trust</div>
+              <div class="cascade-event">A developer spots a flaw in their work—and stays quiet to look competent.</div>
+              <div class="cascade-effect">Mistake stays hidden</div>
+            </div>
+
+            <div class="cascade-step">
+              <div class="cascade-num">STEP 02 · SILENCE</div>
+              <div class="cascade-layer">No Conflict</div>
+              <div class="cascade-event">In review, teammates sense risk but keep meetings polite instead of pushing back.</div>
+              <div class="cascade-effect">Artificial harmony</div>
+            </div>
+
+            <div class="cascade-step">
+              <div class="cascade-num">STEP 03 · DRIFT</div>
+              <div class="cascade-layer">No Commitment</div>
+              <div class="cascade-event">Everyone nods in the meeting, then walks out unsure of the real plan.</div>
+              <div class="cascade-effect">Fake sign-off</div>
+            </div>
+
+            <div class="cascade-step">
+              <div class="cascade-num">STEP 04 · AVOIDANCE</div>
+              <div class="cascade-layer">No Accountability</div>
+              <div class="cascade-event">Because nobody truly bought in, peers hesitate to call out slipped work.</div>
+              <div class="cascade-effect">Standards erode</div>
+            </div>
+
+            <div class="cascade-step is-impact">
+              <div class="cascade-num">STEP 05 · IMPACT</div>
+              <div class="cascade-layer">No Results</div>
+              <div class="cascade-event">People protect personal reputation and tickets while the product misses the mark.</div>
+              <div class="cascade-effect">System failure</div>
+            </div>
+          </div>
+
+          <div class="cascade-callout">
+            Like a distributed system with a broken base layer: you cannot patch results at the top while trust is broken at the bottom.
+          </div>
+
+          <footer class="slide-footer">
+            ONE BROKEN LINK CORRUPTS THE ENTIRE STACK
+          </footer>
+
+        </div>
+      </section>
+
+      <!-- SLIDE 5: THE FIVE BUGS (LENCIONI + ENGINEERING EQUIVALENT) -->
+      <section class="slide slide-05 technical" aria-label="The five bugs" aria-hidden="true">
         <div class="slide-background"></div>
         <div class="tech-texture" aria-hidden="true"></div>
         <div class="slide-content">
 
           <header class="slide-header">
-            <div class="eyebrow">03 / FAILURE DIAGNOSTICS</div>
-            <div class="slide-number">03 / 07</div>
+            <div class="eyebrow">05 / THE FIVE BUGS</div>
+            <div class="slide-number">05 / 09</div>
           </header>
 
           <div class="section-heading">
-            <h2>Five dysfunctions. One broken team.</h2>
-            <p>What does a dysfunctional team actually look like?</p>
+            <h2>Five dysfunctions, translated into engineering reality.</h2>
+            <p>Each Lencioni dysfunction paired with how it actually shows up on a team.</p>
           </div>
 
           <div class="diagnostic-list">
@@ -1265,97 +1900,98 @@
             <div class="diagnostic-row">
               <div class="diagnostic-id">01</div>
               <div class="diagnostic-name">ABSENCE OF TRUST</div>
-              <div class="diagnostic-symptom">Hiding mistakes and weaknesses</div>
+              <div class="diagnostic-symptom"><strong>Nobody admits bugs</strong> — hiding mistakes, gaps, or needing help</div>
               <div class="diagnostic-status">ERROR</div>
             </div>
 
             <div class="diagnostic-row">
               <div class="diagnostic-id">02</div>
               <div class="diagnostic-name">FEAR OF CONFLICT</div>
-              <div class="diagnostic-symptom">Avoiding difficult discussions</div>
+              <div class="diagnostic-symptom"><strong>Nobody challenges bad designs</strong> — polite meetings, silent doubts</div>
               <div class="diagnostic-status">ERROR</div>
             </div>
 
             <div class="diagnostic-row">
               <div class="diagnostic-id">03</div>
               <div class="diagnostic-name">LACK OF COMMITMENT</div>
-              <div class="diagnostic-symptom">Fake agreement and unclear decisions</div>
+              <div class="diagnostic-symptom"><strong>No real alignment</strong> — fake agreement and unclear ownership</div>
               <div class="diagnostic-status">ERROR</div>
             </div>
 
             <div class="diagnostic-row">
               <div class="diagnostic-id">04</div>
               <div class="diagnostic-name">AVOIDANCE OF ACCOUNTABILITY</div>
-              <div class="diagnostic-symptom">Not challenging missed commitments</div>
+              <div class="diagnostic-symptom"><strong>Nobody owns missed work</strong> — waiting for managers to intervene</div>
               <div class="diagnostic-status">ERROR</div>
             </div>
 
             <div class="diagnostic-row">
               <div class="diagnostic-id">05</div>
               <div class="diagnostic-name">INATTENTION TO RESULTS</div>
-              <div class="diagnostic-symptom">Personal success over team success</div>
+              <div class="diagnostic-symptom"><strong>Optimizing personal metrics</strong> — ego or turf over product outcomes</div>
               <div class="diagnostic-status">ERROR</div>
             </div>
 
           </div>
 
           <footer class="slide-footer">
-            FIVE SYMPTOMS · ONE CONNECTED SYSTEM
+            BEHAVIORAL BUGS CAN BREAK EVEN HIGHLY CAPABLE TEAMS
           </footer>
 
         </div>
       </section>
 
-      <section class="slide slide-04 technical" aria-label="Applying the patches" aria-hidden="true">
+      <!-- SLIDE 6: APPLYING THE PATCHES (PRACTICAL HABITS) -->
+      <section class="slide slide-06 technical" aria-label="Applying the patches" aria-hidden="true">
         <div class="slide-background"></div>
         <div class="tech-texture" aria-hidden="true"></div>
         <div class="slide-content">
 
-          <header class="slide-header">
-            <div class="eyebrow">04 / SYSTEM REPAIR</div>
-            <div class="slide-number">04 / 07</div>
+          <header class="slide-header accent-green">
+            <div class="eyebrow is-green">06 / SYSTEM REPAIR</div>
+            <div class="slide-number">06 / 09</div>
           </header>
 
           <div class="section-heading">
-            <h2>What does a healthy team do differently?</h2>
-            <p>The solution isn't more meetings. It's better team behavior.</p>
+            <h2>Applying the patches: habits, not slogans.</h2>
+            <p>Healthy teams don't add more meetings—they change daily behavior.</p>
           </div>
 
           <div class="comparison">
 
             <div class="comparison-heading">
-              <span>DYSFUNCTIONAL TEAM</span>
-              <span>COHESIVE TEAM</span>
+              <span>OBSERVED BUG</span>
+              <span>PRACTICAL TEAM PATCH</span>
             </div>
 
             <div class="comparison-row">
-              <div class="before">Absence of Trust</div>
+              <div class="before">Nobody admits their bugs</div>
               <div class="transformation-arrow">→</div>
-              <div class="after">Vulnerability-based Trust</div>
+              <div class="after"><span>TRUST</span>Make it safe to admit mistakes and ask for help early</div>
             </div>
 
             <div class="comparison-row">
-              <div class="before">Fear of Conflict</div>
+              <div class="before">Nobody challenges bad decisions</div>
               <div class="transformation-arrow">→</div>
-              <div class="after">Productive Debate</div>
+              <div class="after"><span>CONFLICT</span>Debate ideas openly and respectfully—never attack people</div>
             </div>
 
             <div class="comparison-row">
-              <div class="before">Lack of Commitment</div>
+              <div class="before">Fake agreement, unclear ownership</div>
               <div class="transformation-arrow">→</div>
-              <div class="after">Clarity and Buy-in</div>
+              <div class="after"><span>COMMIT</span>Disagree and commit: clear decisions, explicit owners</div>
             </div>
 
             <div class="comparison-row">
-              <div class="before">Avoidance of Accountability</div>
+              <div class="before">Nobody owns failed deliverables</div>
               <div class="transformation-arrow">→</div>
-              <div class="after">Peer Accountability</div>
+              <div class="after"><span>ACCOUNT</span>Practice peer accountability in reviews and sprints</div>
             </div>
 
             <div class="comparison-row">
-              <div class="before">Inattention to Results</div>
+              <div class="before">Optimizing personal metrics</div>
               <div class="transformation-arrow">→</div>
-              <div class="after">Collective Results</div>
+              <div class="after"><span>RESULTS</span>Score success by shared product and customer outcomes</div>
             </div>
 
           </div>
@@ -1366,32 +2002,33 @@
           </div>
 
           <footer class="slide-footer">
-            FROM DYSFUNCTION TO COHESION
+            ORANGE = INCIDENT · GREEN = COHESIVE TEAM HABIT
           </footer>
 
         </div>
       </section>
 
-      <section class="slide slide-05 technical" aria-label="The AI engineering connection" aria-hidden="true">
+      <!-- SLIDE 7: THE AI ENGINEERING TEST (COHERENT SCENARIO) -->
+      <section class="slide slide-07 technical" aria-label="The AI engineering test" aria-hidden="true">
         <div class="slide-background"></div>
         <div class="tech-texture" aria-hidden="true"></div>
         <div class="slide-content">
 
-          <header class="slide-header">
-            <div class="eyebrow">05 / MODERN ENGINEERING</div>
-            <div class="slide-number">05 / 07</div>
+          <header class="slide-header accent-blue">
+            <div class="eyebrow is-blue">07 / THE AI ENGINEERING TEST</div>
+            <div class="slide-number">07 / 09</div>
           </header>
 
           <div class="section-heading">
             <h2>
               AI can accelerate development.
-              <span>But can it build a team?</span>
+              <span>Can it fix a broken team?</span>
             </h2>
-            <p>Faster execution doesn't automatically mean better collaboration.</p>
+            <p>A hypothetical modern scenario: one fast AI-assisted team, five familiar failures.</p>
           </div>
 
           <div class="workflow">
-            <div class="workflow-label">AI-ASSISTED DEVELOPMENT</div>
+            <div class="workflow-label">AI-ASSISTED DELIVERY PIPELINE</div>
 
             <div class="workflow-nodes">
               <svg class="circuit" viewBox="0 0 1600 80" preserveAspectRatio="none" aria-hidden="true">
@@ -1416,58 +2053,71 @@
             </div>
           </div>
 
-          <div class="failure-points">
+          <div class="ai-incident-box">
+            <div class="ai-incident-title">INCIDENT TRACE · AI-POWERED FEATURE LAUNCH</div>
             <div class="failure-point">
               <span>01</span>
-              A developer hides an AI-generated code mistake.
+              AI generates subtle buggy code; the developer hides that they don't fully understand it.
             </div>
             <div class="failure-point">
               <span>02</span>
-              Nobody challenges a questionable architecture decision.
+              A reviewer spots a shaky architecture choice but avoids pushing back to keep the peace.
             </div>
             <div class="failure-point">
               <span>03</span>
-              The team agrees to a feature without clarifying ownership.
+              The team agrees to a tight release date without clarifying who owns integration.
             </div>
             <div class="failure-point">
               <span>04</span>
-              Repeated missed deliverables go unaddressed.
+              The deadline slips—and nobody raises the missed handoffs with their peers.
             </div>
             <div class="failure-point">
               <span>05</span>
-              Individual output is celebrated while product outcomes suffer.
+              Velocity charts and PR counts look great while real product quality quietly degrades.
             </div>
           </div>
 
           <div class="key-insight">
-            AI CAN HELP A TEAM MOVE FASTER.<br />
-            IT CANNOT REPLACE TRUST, COMMITMENT, OR ACCOUNTABILITY.
+            AI SPEEDS UP EXECUTION.<br />
+            <span>IT ALSO HELPS A DYSFUNCTIONAL TEAM FAIL FASTER.</span>
           </div>
 
           <footer class="slide-footer">
-            AN APPLICATION OF LENCIONI'S MODEL TO AI-ASSISTED ENGINEERING
+            OUR APPLICATION OF LENCIONI'S MODEL TO AI-ASSISTED ENGINEERING
           </footer>
 
         </div>
       </section>
 
-      <section class="slide slide-06 cinematic" aria-label="Final diagnostic" aria-hidden="true">
+      <!-- SLIDE 8: CLOSE THE LOOP (CINEMATIC) -->
+      <section class="slide slide-08 cinematic" aria-label="Final diagnostic" aria-hidden="true">
         <div class="slide-background"></div>
         <div class="ambient-particles"></div>
 
+        <div class="shooting-stars" aria-hidden="true">
+          <i style="top: 8%; left: 62%; --delay: 1.2s; --dur: 9s"></i>
+          <i style="top: 4%; left: 96%; --delay: 4.4s; --dur: 12s"></i>
+          <i style="top: 28%; left: 80%; --delay: 7.6s; --dur: 10.5s"></i>
+        </div>
+
         <div class="closing-orb" aria-hidden="true">
-          <div class="closing-glow"></div>
-          <div class="closing-ring"></div>
+          <svg class="closing-glow" viewBox="-175 -175 350 350">
+            <circle r="175" fill="url(#earthHalo)" />
+            <use href="#earth-globe" x="-150" y="-150" width="300" height="300" />
+          </svg>
         </div>
 
         <div class="slide-content">
-          <div class="eyebrow">FINAL DIAGNOSTIC / HUMAN FACTOR</div>
+          <div class="eyebrow">08 / FINAL DIAGNOSTIC · CLOSING THE LOOP</div>
+
+          <p class="callback-note">
+            We started with DecisionTech: brilliant people, strong tech, failing company. The fix wasn't smarter hires or faster tools—it was how they worked together.
+          </p>
 
           <div class="closing-question">
             <h2>
               Are we building a team,<br />
-              or just working alongside<br />
-              each other?
+              or just working alongside each other?
             </h2>
           </div>
 
@@ -1478,7 +2128,7 @@
             </div>
             <div class="reflection-item">
               <span>02</span>
-              <p>Can we challenge each other's ideas<br />without taking it personally?</p>
+              <p>Can we challenge each other's ideas without taking it personally?</p>
             </div>
             <div class="reflection-item">
               <span>03</span>
@@ -1487,8 +2137,8 @@
           </div>
 
           <div class="closing-statement">
-            <p>GREAT TEAMS AREN'T JUST GROUPS OF TALENTED PEOPLE.</p>
-            <h2>THEY'RE GROUPS OF PEOPLE<br />WHO MAKE EACH OTHER BETTER.</h2>
+            <p>GREAT TEAMS AREN'T JUST COLLECTIONS OF TALENTED INDIVIDUALS.</p>
+            <h2>THEY'RE SYSTEMS WHERE PEOPLE<br />MAKE EACH OTHER BETTER.</h2>
           </div>
 
           <footer class="closing-footer">
@@ -1497,17 +2147,26 @@
         </div>
       </section>
 
-      <section class="slide slide-07 cinematic" aria-label="Thank you" aria-hidden="true">
+      <!-- SLIDE 9: THANK YOU + JOKE (CINEMATIC) -->
+      <section class="slide slide-09 cinematic" aria-label="Thank you" aria-hidden="true">
         <div class="slide-background"></div>
         <div class="ambient-particles"></div>
 
+        <div class="shooting-stars" aria-hidden="true">
+          <i style="top: 8%; left: 62%; --delay: 1.2s; --dur: 9s"></i>
+          <i style="top: 4%; left: 96%; --delay: 4.4s; --dur: 12s"></i>
+          <i style="top: 28%; left: 80%; --delay: 7.6s; --dur: 10.5s"></i>
+        </div>
+
         <div class="closing-orb" aria-hidden="true">
-          <div class="closing-glow"></div>
-          <div class="closing-ring"></div>
+          <svg class="closing-glow" viewBox="-175 -175 350 350">
+            <circle r="175" fill="url(#earthHalo)" />
+            <use href="#earth-globe" x="-150" y="-150" width="300" height="300" />
+          </svg>
         </div>
 
         <div class="slide-content">
-          <div class="eyebrow">SESSION COMPLETE / 07 OF 07</div>
+          <div class="eyebrow">09 / SESSION COMPLETE</div>
 
           <h2 class="thank-you">
             <span class="title-main">THANK</span>
@@ -1538,7 +2197,7 @@
           <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M10.5 2.5 5 8l5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
         </button>
         <div class="indicators" id="indicators"></div>
-        <div class="counter" id="counter" aria-live="polite">01 / 07</div>
+        <div class="counter" id="counter" aria-live="polite">01 / 09</div>
         <button type="button" id="next" aria-label="Next slide">
           <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 2.5 11 8l-5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
         </button>
@@ -1575,7 +2234,8 @@
       }
 
       function updateChrome() {
-        counter.textContent = String(index + 1).padStart(2, "0") + " / " + String(slides.length).padStart(2, "0");
+        const total = String(slides.length).padStart(2, "0");
+        counter.textContent = String(index + 1).padStart(2, "0") + " / " + total;
         progress.style.width = ((index + 1) / slides.length) * 100 + "%";
         indicators.querySelectorAll("button").forEach(function (button, i) {
           const on = i === index;
@@ -1645,7 +2305,7 @@
           render(slides.length - 1);
         } else if (key === "Escape") {
           if (document.fullscreenElement) document.exitFullscreen();
-        } else if (key >= "1" && key <= "7") {
+        } else if (key >= "1" && key <= "9") {
           render(Number(key) - 1);
         } else {
           return;
@@ -1662,6 +2322,139 @@
       window.addEventListener("mousemove", showControls);
       window.addEventListener("resize", fit);
 
+      function initAsteroidBelt() {
+        const back = document.getElementById("belt-back");
+        const front = document.getElementById("belt-front");
+        const scene = document.querySelector(".slide-01");
+        if (!back || !front || !scene) return;
+
+        const ns = "http://www.w3.org/2000/svg";
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const radiusX = 480;
+        const flatten = 0.3;
+        const rocks = [];
+
+        for (let i = 0; i < 90; i++) {
+          const rock = document.createElementNS(ns, "polygon");
+          const size = 1.1 + Math.random() * Math.random() * 5.2;
+          const sides = 5 + Math.floor(Math.random() * 3);
+          const points = [];
+          for (let k = 0; k < sides; k++) {
+            const a = (k / sides) * Math.PI * 2;
+            const r = size * (0.6 + Math.random() * 0.5);
+            points.push((Math.cos(a) * r).toFixed(2) + "," + (Math.sin(a) * r).toFixed(2));
+          }
+          const tone = 110 + Math.floor(Math.random() * 70);
+          rock.setAttribute("points", points.join(" "));
+          rock.setAttribute("fill", "rgb(" + (tone + 22) + "," + tone + "," + (tone - 28) + ")");
+          rock.setAttribute("stroke", "rgba(20,14,10,0.55)");
+          rock.setAttribute("stroke-width", "0.6");
+          rocks.push({
+            el: rock,
+            angle: Math.random() * Math.PI * 2,
+            radial: (Math.random() - 0.5) * 70,
+            lift: (Math.random() - 0.5) * 12,
+            speed: 0.022 + Math.random() * 0.018,
+            spin: Math.random() * 360,
+            spinSpeed: (Math.random() - 0.5) * 50,
+            isFront: null
+          });
+        }
+
+        function place(rock) {
+          const sin = Math.sin(rock.angle);
+          const rx = radiusX + rock.radial;
+          const x = Math.cos(rock.angle) * rx;
+          const y = sin * rx * flatten + rock.lift;
+          const isFront = sin > 0;
+          if (isFront !== rock.isFront) {
+            (isFront ? front : back).appendChild(rock.el);
+            rock.isFront = isFront;
+          }
+          const depth = 0.78 + 0.32 * sin;
+          rock.el.setAttribute("transform", "translate(" + x.toFixed(1) + " " + y.toFixed(1) + ") rotate(" + rock.spin.toFixed(1) + ") scale(" + depth.toFixed(2) + ")");
+          rock.el.setAttribute("opacity", (0.5 + 0.45 * (sin + 1) / 2).toFixed(2));
+        }
+
+        rocks.forEach(place);
+        if (reduceMotion) return;
+
+        let last = performance.now();
+        function tick(now) {
+          const dt = Math.min(0.1, (now - last) / 1000);
+          last = now;
+          if (scene.classList.contains("is-active")) {
+            rocks.forEach(function (rock) {
+              rock.angle += rock.speed * dt;
+              rock.spin += rock.spinSpeed * dt;
+              place(rock);
+            });
+          }
+          window.requestAnimationFrame(tick);
+        }
+        window.requestAnimationFrame(tick);
+      }
+
+      function buildSaturnRings() {
+        const gradient = document.getElementById("ringBands");
+        if (!gradient) return;
+        const ns = "http://www.w3.org/2000/svg";
+        const planetRadius = 170;
+        const gradientRadius = 400;
+
+        function bandNoise(r) {
+          return 0.5
+            + 0.16 * Math.sin(r * 0.93)
+            + 0.12 * Math.sin(r * 0.31 + 0.7)
+            + 0.12 * Math.sin(r * 2.37 + 1.3)
+            + 0.09 * Math.sin(r * 5.11 + 2.1)
+            + 0.05 * Math.sin(r * 11.7 + 0.4);
+        }
+
+        function sample(r) {
+          const x = r / planetRadius;
+          const n = Math.max(0, Math.min(1, bandNoise(r)));
+          const shade = 0.8 + 0.34 * n;
+          let rgb = [0, 0, 0];
+          let alpha = 0;
+
+          if (x >= 1.24 && x < 1.53) {
+            rgb = [176, 158, 134];
+            alpha = 0.1 + 0.14 * n;
+          } else if (x >= 1.53 && x < 1.95) {
+            const t = (x - 1.53) / 0.42;
+            rgb = [236 - 22 * t, 214 - 30 * t, 172 - 42 * t];
+            alpha = Math.min(1, 0.72 + 0.24 * n) * Math.min(1, (x - 1.53) / 0.03 + 0.4);
+          } else if (x >= 1.95 && x < 2.03) {
+            rgb = [80, 68, 56];
+            alpha = 0.06;
+          } else if (x >= 2.03 && x < 2.27) {
+            rgb = [206, 182, 142];
+            alpha = 0.5 + 0.22 * n;
+            if (Math.abs(x - 2.21) < 0.007) alpha = 0.04;
+          } else if (x >= 2.31 && x < 2.33) {
+            rgb = [242, 228, 204];
+            alpha = 0.62;
+          }
+
+          return {
+            color: "rgb(" + rgb.map(function (c) { return Math.round(Math.min(255, c * shade)); }).join(",") + ")",
+            alpha: alpha
+          };
+        }
+
+        for (let r = 200; r <= 400; r += 0.75) {
+          const s = sample(r);
+          const stop = document.createElementNS(ns, "stop");
+          stop.setAttribute("offset", (r / gradientRadius).toFixed(5));
+          stop.setAttribute("stop-color", s.color);
+          stop.setAttribute("stop-opacity", s.alpha.toFixed(3));
+          gradient.appendChild(stop);
+        }
+      }
+
+      buildSaturnRings();
+      initAsteroidBelt();
       fit();
       render(0);
       showControls();

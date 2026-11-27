@@ -1,139 +1,139 @@
-# Debugging a Team — speaker notes
+# Debugging a Team — Speaker Notes (9-Slide Edition)
 
-These notes are the spoken script only. They do not appear on the slides.
+These notes are for the presenter only and do not appear on the slides.
 
-The five dysfunctions, their order, and the cohesive-team behaviors come from Patrick Lencioni. The engineering language and the AI scenario are this presentation’s metaphor, not claims made in the book.
+The five dysfunctions, their order, DecisionTech's story, and the cohesive team behaviors come from Patrick Lencioni's *The Five Dysfunctions of a Team*. The engineering framing and the AI scenario are our presentation metaphor, not claims made by the author.
 
-Runtime: about 8 minutes. Six slides, 16:9.
+Presenter: Shahriar Rashid, AI Engineer Intern, SJ Innovation
+Runtime: ~8–9 minutes · 9 slides · 16:9
 
-## Slide 1 — Incident Report
+---
 
-1 minute
+## Slide 1 — Debugging a Team (45 seconds)
 
-Imagine a software project where every developer is talented. The team has good tools, everyone is working hard, and the individual components are being developed properly.
+Introduce yourself briefly.
 
-But somehow, the product keeps falling behind.
+"Imagine a software project where every person on the team is talented. Good tools, hard work, individual tasks getting done—yet the product keeps slipping.
 
-Would we immediately blame the developers? Or would we investigate how the entire team operates?
+When a system fails even though every individual component looks fine, we don't just blame one component. We debug how the system operates together.
 
-That's the idea I want to explore today.
+That's what I want to explore today, inspired by Patrick Lencioni's *The Five Dysfunctions of a Team*."
 
-I recently read Patrick Lencioni's The Five Dysfunctions of a Team. It tells the story of a company called DecisionTech, whose leadership team struggles despite having capable executives.
+Transition: "Let's start with the incident itself."
 
-The interesting part is that the problem isn't simply a lack of talent. It's how the people work together.
+---
 
-Transition: "So, what exactly is going wrong?"
+## Slide 2 — The Incident: DecisionTech (1 minute)
 
-## Slide 2 — Root Cause Analysis
+"Lencioni tells the story of a Silicon Valley company called DecisionTech.
 
-1 minute 15 seconds
+On paper, DecisionTech should have dominated its market. It had a more experienced executive team than its competitors, stronger core technology, more cash, and a better-connected board.
 
-Lencioni identifies five dysfunctions that affect teamwork.
+Every individual metric looked green. Yet the company was trailing two competitors in both revenue and customer growth.
 
-But these aren't five independent problems. They're connected.
+Lencioni opens the book with a line that stuck with me: 'Not finance. Not strategy. Not technology. It is teamwork that remains the ultimate competitive advantage.'
 
-At the foundation is the absence of trust. When people aren't comfortable admitting mistakes or weaknesses, they become guarded.
+So why was a team full of capable people failing?"
 
-That leads to a fear of conflict. People avoid challenging ideas or discussing difficult issues.
+Transition: "When we inspect the root cause, we don't find five random problems—we find one connected stack."
 
-Without honest discussion, commitment becomes weaker. People may agree in meetings without genuinely buying into the decisions.
+---
 
-Then accountability suffers because nobody wants to challenge their peers.
+## Slide 3 — System Analysis: The Pyramid (1 minute)
 
-And eventually, people start prioritizing personal interests over the team's collective results.
+"Lencioni maps five dysfunctions as a pyramid, starting from the bottom up: Absence of Trust, Fear of Conflict, Lack of Commitment, Avoidance of Accountability, and Inattention to Results.
 
-The important takeaway is that a problem at the foundation can affect the entire team.
+The key insight is that these are not five independent issues you can fix in isolation. They form a dependency stack. A crack at the foundation—trust—weakens every layer built on top of it."
 
-Transition: "Let's look at what these problems actually look like."
+Transition: "Let's trace how that chain reaction actually plays out."
 
-## Slide 3 — The Five Bugs
+---
 
-2 minutes
+## Slide 4 — Failure Propagation: The Cascade (1 minute)
 
-The first dysfunction is absence of trust. Team members hide mistakes, weaknesses, or uncertainty instead of asking for help.
+"Trace one concrete scenario.
 
-The second is fear of conflict. People avoid difficult conversations because they don't want to create tension.
+Step 1: A developer spots a flaw in their work, but doesn't feel safe admitting it. That's absence of trust.
 
-The third is lack of commitment. A meeting ends with apparent agreement, but people aren't actually convinced about the decision.
+Step 2: In review, teammates sense something is off, but keep the meeting polite instead of pushing back. That's fear of conflict—artificial harmony.
 
-The fourth is avoidance of accountability. Team members hesitate to challenge colleagues when commitments aren't being met.
+Step 3: Because real concerns were never aired, people nod in the meeting without genuinely buying into the plan. Lack of commitment.
 
-And the fifth is inattention to results. Individual recognition, ego, or personal interests become more important than the team's shared goals.
+Step 4: When nobody truly committed, peers hesitate to call each other out when deliverables slip. Avoidance of accountability.
 
-Notice that none of these necessarily means the people involved are incompetent.
+Step 5: Eventually people protect their own tickets and reputation while the product misses the mark. Inattention to results.
 
-They are behavioral problems that can exist even in teams full of highly capable individuals.
+Just like a distributed system with a broken base layer, you can't fix results at the top while trust is broken at the bottom."
 
-Transition: "So, what would a healthy version of this team look like?"
+Transition: "So what do these five bugs look like day to day?"
 
-## Slide 4 — Applying the Patches
+---
 
-1 minute 30 seconds
+## Slide 5 — The Five Bugs (1 minute 15 seconds)
 
-Lencioni also describes the positive behaviors of cohesive teams.
+"Here are the five dysfunctions translated into everyday engineering and workplace behavior:
 
-Instead of hiding weaknesses, people become comfortable being vulnerable.
+1. Absence of Trust — nobody admits bugs, mistakes, or gaps, or asks for help.
+2. Fear of Conflict — bad designs and weak plans go unchallenged to keep meetings polite.
+3. Lack of Commitment — fake agreement in meetings, followed by unclear ownership outside them.
+4. Avoidance of Accountability — missed deliverables go unaddressed while everyone waits for a manager to step in.
+5. Inattention to Results — optimizing personal metrics, ego, or department turf over shared product outcomes.
 
-Instead of avoiding disagreement, they engage in productive debate.
+Notice that none of these means the people are incompetent. They are behavioral bugs that show up even in highly capable teams."
 
-Instead of pretending to agree, they leave discussions with clarity and genuine commitment.
+Transition: "So how do we patch them?"
 
-Instead of waiting for managers to intervene, they hold one another accountable.
+---
 
-And instead of competing for individual recognition, they focus on collective results.
+## Slide 6 — System Repair: Applying the Patches (1 minute 15 seconds)
 
-One thing I found particularly interesting is that a healthy team isn't necessarily a team without disagreement.
+"The fix isn't more meetings or management slogans. It's five practical team habits:
 
-It's a team where people can disagree about ideas without damaging their relationships.
+- Replace hiding bugs with vulnerability-based trust: make it safe to admit mistakes and ask for help early.
+- Replace silence with productive conflict: debate ideas openly and respectfully without making it personal.
+- Replace fake agreement with disagree-and-commit: leave discussions with clear decisions and explicit owners.
+- Replace avoidance with peer accountability: hold each other to agreed standards in reviews and sprints.
+- Replace personal scorecards with shared results: measure success by product and customer outcomes.
 
-Transition: "And this becomes especially interesting when we look at modern AI-assisted engineering."
+Healthy teams don't avoid disagreement—they make disagreement productive."
 
-## Slide 5 — The AI Engineering Connection
+Transition: "Now let's test this model on modern AI-assisted engineering."
 
-1 minute 30 seconds
+---
 
-Imagine an engineering team using AI coding assistants.
+## Slide 7 — The AI Engineering Test (1 minute 15 seconds)
 
-One developer makes a mistake in AI-generated code but hides it.
+"This part is our own application of Lencioni's model, not an example from the book.
 
-Another developer notices a questionable architectural decision but doesn't challenge it.
+Imagine a modern engineering team using AI coding assistants across code generation, review, architecture, and delivery.
 
-The team agrees to build a feature, but nobody clearly owns the delivery.
+1. AI generates code with a subtle bug, and the developer hides that they don't fully understand it.
+2. A reviewer notices a shaky architecture choice, but stays quiet to avoid tension.
+3. The team agrees to a release date without clarifying who owns integration.
+4. The deadline slips, and nobody addresses the missed handoffs.
+5. PR counts and velocity charts look impressive while actual product quality degrades.
 
-Deadlines are missed, yet nobody addresses the issue.
+AI clearly speeds up execution. But without trust, honest debate, commitment, and accountability, AI can also help a dysfunctional team fail faster."
 
-Meanwhile, everyone celebrates how much code has been generated, even though the overall product isn't improving.
+Transition: "That brings us back to where we started."
 
-This is a hypothetical scenario, but it illustrates how Lencioni's model applies to modern engineering.
+---
 
-AI can help us write code faster, automate repetitive work, and build prototypes more quickly.
+## Slide 8 — Final Diagnostic: Closing the Loop (45 seconds)
 
-But it cannot automatically create trust, healthy disagreement, commitment, or accountability.
+"We started with DecisionTech: brilliant people, strong tech, failing company. The fix wasn't hiring smarter people or buying faster tools. It was fixing how the team worked together.
 
-My biggest takeaway here is that AI can increase the speed of execution, but speed without trust, alignment, and accountability can simply help a dysfunctional team fail faster.
+So I'll leave us with three questions:
+1. Can we admit when we don't know something?
+2. Can we challenge each other's ideas without taking it personally?
+3. Are we collectively responsible for the outcome?
 
-Transition: "And that brings me to my final question."
-
-## Slide 6 — The Final Diagnostic
-
-1 minute
-
-After reading this book, I started thinking about teamwork differently.
-
-I used to think teamwork was mostly about working together, dividing tasks, and completing responsibilities.
-
-But I now think it's also about creating an environment where people can admit mistakes, challenge ideas, commit to decisions, and hold one another accountable.
-
-So, I want to leave you with three questions.
-
-Can we admit when we don't know something?
-
-Can we challenge each other's ideas without taking it personally?
-
-And are we collectively responsible for the outcome?
-
-Because ultimately, great teams aren't just groups of talented people.
-
-They're groups of people who make each other better.
+Because great teams aren't just collections of talented individuals. They're systems where people make each other better."
 
 Pause after the final sentence.
+
+---
+
+## Slide 9 — Thank You (15 seconds)
+
+"Thank you for listening. Questions are welcome—fear of conflict is temporarily disabled."
